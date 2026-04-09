@@ -1,0 +1,176 @@
+---
+import { CodeXml, MenuIcon, X } from "@lucide/astro";
+---
+
+<header
+    class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="/" class="shrink-0 flex items-center gap-2">
+                <CodeXml class="w-8 h-8 text-indigo-500" />
+                <span class="font-bold text-xl tracking-tight">DVLOP</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a
+                    href="/services"
+                    class="text-sm font-medium text-light hover:text-accent transition-colors"
+                >
+                    Services
+                </a>
+                <a
+                    href="/work"
+                    class="text-sm font-medium text-light hover:text-accent transition-colors"
+                >
+                    Our Work
+                </a>
+                <a
+                    href="/about"
+                    class="text-sm font-medium text-light hover:text-accent transition-colors"
+                >
+                    About
+                </a>
+            </nav>
+            <div class="hidden md:block">
+                <a
+                    href="/contact"
+                    class="bg-primary hover:bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(79,70,229,0.3)] hover:shadow-[0_0_20px_rgba(79,70,229,0.5)]"
+                >
+                    Let's Talk
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button
+                    id="mobile-menu-btn"
+                    class="text-slate-300 hover:text-white transition-colors p-2"
+                    aria-label="Toggle mobile menu"
+                >
+                    <MenuIcon id="menu-icon-open" class="w-6 h-6" />
+                    <X id="menu-icon-close" class="w-6 h-6 hidden" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+        id="mobile-menu"
+        class="absolute left-0 right-0 top-full md:hidden bg-slate-950/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300 origin-top opacity-0 pointer-events-none -translate-y-4"
+    >
+        <div class="px-4 pt-2 pb-6 space-y-2 shadow-2xl">
+            <a
+                href="/services"
+                class="block px-4 py-3 rounded-xl text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition-colors mobile-link"
+                >Services</a
+            >
+            <a
+                href="/work"
+                class="block px-4 py-3 rounded-xl text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition-colors mobile-link"
+                >Our Work</a
+            >
+            <a
+                href="/about"
+                class="block px-4 py-3 rounded-xl text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition-colors mobile-link"
+                >About</a
+            >
+            <a
+                href="/contact"
+                class="block px-4 py-3 mt-4 text-center rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-base font-medium transition-colors mobile-link border border-indigo-500/50"
+                >Let's Talk</a
+            >
+        </div>
+    </div>
+</header>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const iconOpen = document.getElementById("menu-icon-open");
+        const iconClose = document.getElementById("menu-icon-close");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        function toggleMenu() {
+            if (!menu || !iconOpen || !iconClose) return;
+            menu.classList.toggle("opacity-0");
+            menu.classList.toggle("pointer-events-none");
+            menu.classList.toggle("-translate-y-4");
+            menu.classList.toggle("opacity-100");
+            menu.classList.toggle("pointer-events-auto");
+            menu.classList.toggle("translate-y-0");
+
+            iconOpen.classList.toggle("hidden");
+            iconClose.classList.toggle("hidden");
+        }
+
+        if (btn) {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode?.replaceChild(newBtn, btn);
+            newBtn.addEventListener("click", toggleMenu);
+        }
+
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                if (!menu || !iconOpen || !iconClose) return;
+                menu.classList.add(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "-translate-y-4",
+                );
+                menu.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-y-0",
+                );
+
+                iconOpen.classList.remove("hidden");
+                iconClose.classList.add("hidden");
+            });
+        });
+    });
+
+    // Fallback if view transitions are not used
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    const iconOpen = document.getElementById("menu-icon-open");
+    const iconClose = document.getElementById("menu-icon-close");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    function initMenu() {
+        if (!btn) return;
+        btn.addEventListener("click", () => {
+            if (!menu || !iconOpen || !iconClose) return;
+            menu.classList.toggle("opacity-0");
+            menu.classList.toggle("pointer-events-none");
+            menu.classList.toggle("-translate-y-4");
+            menu.classList.toggle("opacity-100");
+            menu.classList.toggle("pointer-events-auto");
+            menu.classList.toggle("translate-y-0");
+
+            iconOpen.classList.toggle("hidden");
+            iconClose.classList.toggle("hidden");
+        });
+
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                if (!menu || !iconOpen || !iconClose) return;
+                menu.classList.add(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "-translate-y-4",
+                );
+                menu.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-y-0",
+                );
+
+                iconOpen.classList.remove("hidden");
+                iconClose.classList.add("hidden");
+            });
+        });
+    }
+
+    initMenu();
+</script>

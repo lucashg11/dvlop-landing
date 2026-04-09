@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import { ArrowUpRight, Clock, Target, CheckCircle2, CircleCheck } from "@lucide/astro";
+
+const projects = [
+    {
+        id: "ecommerce-replatforming",
+        title: "E-Commerce Replatforming",
+        category: "Web Development",
+        image: ecommerceReplatformingImg,
+        timeline: "12 Weeks",
+        problem: "The client was stuck on a legacy monolithic platform that caused 5+ second page load times, resulting in a disastrously high cart abandonment rate and poor SEO rankings.",
+        solution: [
+            "Migrated the entire catalog to a Headless Shopify architecture.",
+            "Built a blazing-fast frontend using Next.js and Tailwind CSS.",
+            "Implemented edge-caching resulting in sub-second load times.",
+            "Integrated a robust CMS for the marketing team to freely manage content."
+        ],
+        results: "Conversion rates increased by 42% and mobile traffic bounce rate dropped by 60% within the first month.",
+        loading: "eager"
+    },
+    {
+        id: "fintech-dashboard",
+        title: "Fintech Dashboard",
+        category: "UI/UX Design",
+        image: fintechDashboardImg,
+        timeline: "8 Weeks",
+        problem: "A promising fintech startup had a powerful backend but their user interface was intimidating, cluttered, and caused massive churn among non-technical users.",
+        solution: [
+            "Conducted extensive user research to understand pain points.",
+            "Redesigned the entire user flow to prioritize critical actions.",
+            "Created a scalable design system using Figma & Tailwind CSS.",
+            "Implemented dark mode and customizable widget layouts."
+        ],
+        results: "User engagement time increased by 35% and customer support tickets related to UI confusion dropped to near zero.",
+        loading: "lazy"
+    },
+    {
+        id: "corporate-identity",
+        title: "Corporate Identity",
+        category: "Branding",
+        image: corporateIdentityImg,
+        timeline: "6 Weeks",
+        problem: "A traditional B2B company needed to modernize their visual language to attract younger enterprise clients without alienating their loyal customer base.",
+        solution: [
+            "Refined the logo mark to look striking in digital formats.",
+            "Developed a modern, accessible color palette and typography system.",
+            "Created comprehensive brand guidelines for marketing teams.",
+            "Designed and developed a cohesive landing page to launch the brand."
+        ],
+        results: "The rebrand contributed to a 20% increase in inbound enterprise leads in Q3.",
+        loading: "lazy"
+    },
+    {
+        id: "healthcare-portal",
+        title: "Healthcare Portal",
+        category: "Web App",
+        image: healthcarePortalImg,
+        timeline: "16 Weeks",
+        problem: "Patients were unable to access their records seamlessly, leading to overloaded phone lines and massive administrative overhead for the clinic.",
+        solution: [
+            "Built a secure, HIPAA-compliant patient dashboard.",
+            "Integrated API bridges with their existing legacy on-premise medical software.",
+            "Developed self-serve appointment booking and document downloads.",
+            "Ensured strict end-to-end encryption and compliance."
+        ],
+        results: "Administrative call volume dropped by 55%, saving thousands of human-hours annually.",
+        loading: "lazy"
+    }
+];
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import ecommerceReplatformingImg from "../assets/images/e-commerce-replatforming.avif";
+import fintechDashboardImg from "../assets/images/fintech-dashboard.avif";
+import corporateIdentityImg from "../assets/images/corporate-identity.avif";
+import healthcarePortalImg from "../assets/images/health-care-portal.avif";
+---
+
+<Layout title="Our Work - DVLOP Premium Web Agency">
+    <Header />
+    
+    <main class="pt-32 pb-24">
+        <!-- Header -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-accent text-sm font-semibold tracking-wide uppercase mb-6">
+                Portfolio
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 reveal" transition:name="work-title">
+                Featured <span class="bg-clip-text bg-linear-to-r from-primary to-accent text-transparent">Projects</span>
+            </h1>
+            <p class="text-xl text-light/70 max-w-3xl mx-auto">
+                Explore our recent collaborations. We break down the challenges our clients faced and exactly how we engineered solutions for them.
+            </p>
+        </section>
+
+        <!-- Projects Feed -->
+        <div class="space-y-32">
+            {projects.map((project, index) => (
+                <section id={project.id} class="scroll-mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group reveal">
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden p-8 lg:p-12">
+                        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                            
+                            <!-- Project Details -->
+                            <div class="order-2 lg:order-1">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="text-accent font-medium uppercase tracking-wider text-sm">{project.category}</span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                    <div class="flex items-center gap-2 text-slate-400 text-sm font-medium">
+                                        <Clock class="w-4 h-4" />
+                                        {project.timeline}
+                                    </div>
+                                </div>
+                                
+                                <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 group-hover:text-primary transition-colors reveal">
+                                    {project.title}
+                                </h2>
+                                
+                                <div class="mb-8">
+                                    <h3 class="flex items-center gap-2 text-lg font-bold text-white mb-3">
+                                        <Target class="w-5 h-5 text-red-400" />
+                                        The Problem
+                                    </h3>
+                                    <p class="text-light/80 leading-relaxed">
+                                        {project.problem}
+                                    </p>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <h3 class="flex items-center gap-2 text-lg font-bold text-white mb-4">
+                                        <CircleCheck class="w-5 h-5 text-emerald-400" />
+                                        Our Solution
+                                    </h3>
+                                    <ul class="space-y-3">
+                                        {project.solution.map(item => (
+                                            <li class="flex items-start gap-3">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span>
+                                                <span class="text-light/80">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                
+                                <div class="p-6 bg-primary/10 border border-primary/20 rounded-2xl">
+                                    <h4 class="text-primary font-bold mb-2">The Outcome</h4>
+                                    <p class="text-white font-medium">{project.results}</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Image -->
+                            <div class="order-1 lg:order-2 relative aspect-video lg:aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+                                <Image src={project.image}
+                                    alt={project.title}
+                                    loading={project.loading as "eager" | "lazy"}
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    transition:name={`project-image-${project.id}`}
+                                />
+                                <div class="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+            ))}
+        </div>
+        
+        <CTA />
+    </main>
+    
+    <Footer />
+</Layout>

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "tailwind-animations";
+
+@theme {
+  --color-primary: #6E44FF;
+  --color-primary-hover: #5a36d9;
+  --color-dark: #080B10;
+  --color-accent: #B8F2FF;
+  --color-light: #F5F5F0;
+}
+/* Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1),
+              transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add slight delay staggering for nested reveals */
+.reveal-visible .reveal {
+  transition-delay: 150ms;
+}
+
+/* Premium Background Utilities */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(110, 68, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(110, 68, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(110, 68, 255, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.animate-float {
+  animation: float 15s infinite ease-in-out;
+}

@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ArrowRight, Paintbrush, ShoppingCart, TrendingUp, CircleCheck, CodeXml } from "@lucide/astro";
+import { Image } from 'astro:assets';
+import webDevImg from "../assets/images/web-development.avif";
+import uxuiImg from "../assets/images/ux-ui.avif";
+import ecommerceImg from "../assets/images/e-commerce-solution.avif";
+import seoImg from "../assets/images/seo-performance.avif";
+
+// Detailed services data
+const services = [
+    {
+        id: "custom-web-development",
+        title: "Custom Web Development",
+        icon: CodeXml,
+        description: "We build tailored web applications that perfectly align with your business logic. From SPA (Single Page Applications) to robust SSR (Server-Side Rendered) platforms, our engineering team ensures that your digital infrastructure is built to scale smoothly as your user base grows.",
+        features: ["React, Astro & Next.js", "Serverless Architecture", "Headless CMS Integration", "REST & GraphQL APIs"],
+        image: webDevImg,
+        loading: "eager"
+    },
+    {
+        id: "ui-ux-design",
+        title: "UI/UX Design",
+        icon: Paintbrush,
+        description: "Our design process starts with understanding your audience. We create intuitive user journeys and stunning interfaces that not only look beautiful but are strategically designed to reduce friction and guide users toward conversion points.",
+        features: ["User Research & Personas", "Wireframing & Prototyping", "Design Systems", "Usability Testing"],
+        image: uxuiImg,
+        loading: "lazy"
+    },
+    {
+        id: "e-commerce-solutions",
+        title: "E-Commerce Solutions",
+        icon: ShoppingCart,
+        description: "Selling online requires a flawless customer experience. We develop headless e-commerce solutions that load instantly and provide seamless checkout flows, integrating with platforms like Shopify, Stripe, and modern PIMs.",
+        features: ["Headless Commerce", "Payment Gateway Integration", "Inventory Management Sync", "Conversion Rate Optimization"],
+        image: ecommerceImg,
+        loading: "lazy"
+    },
+    {
+        id: "seo-performance",
+        title: "SEO & Performance",
+        icon: TrendingUp,
+        description: "A beautiful website is useless if nobody sees it. We audit, restructure and optimize your digital real-estate to secure high search engine placement and lightning-fast load times.",
+        features: ["Technical SEO Audits", "Core Web Vitals Optimization", "Keyword Strategy", "Performance Monitoring"],
+        image: seoImg,
+        loading: "lazy" 
+    },
+];
+
+---
+
+<Layout title="Services - DVLOP Premium Web Agency">
+    <Header />
+    
+    <main class="pt-32 pb-24">
+        <!-- Header -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 reveal">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 reveal" transition:name="services-title">Our <span class="bg-clip-text bg-linear-to-r from-primary to-accent text-transparent">Services</span></h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">Discover how our specialized disciplines come together to create digital products that drive real business growth.</p>
+        </section>
+
+        <!-- Detailed Services List -->
+        <div class="space-y-32">
+            {services.map((service, index) => {
+                const isEven = index % 2 === 0;
+                const Icon = service.icon;
+                
+                return (
+                    <section id={service.id} class="scroll-mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group reveal">
+                        <div class="grid lg:grid-cols-2 gap-16 items-center">
+                            <!-- Text Content -->
+                            <div class={!isEven ? 'lg:order-2' : 'lg:order-1'}>
+                                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-accent mb-6 group-hover:bg-indigo-500/20 transition-colors">
+                                    <Icon class="w-5 h-5" />
+                                    <span class="font-semibold tracking-wide uppercase text-sm">{service.title}</span>
+                                </div>
+                                
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6 group-hover:text-indigo-100 transition-colors reveal">{service.title}</h2>
+                                <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                                    {service.description}
+                                </p>
+                                
+                                <div class="grid sm:grid-cols-2 gap-4 mb-10">
+                                    {service.features.map(feature => (
+                                        <div class="flex items-center gap-2">
+                                            <CircleCheck class="w-5 h-5 text-indigo-500 shrink-0" />
+                                            <span class="text-slate-300">{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                <a href="/contact" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-indigo-600 text-white px-6 py-3 rounded-full font-medium transition-all border border-slate-700 hover:border-indigo-600 shadow-xl hover:shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                                    Let's talk about this
+                                    <ArrowRight class="w-4 h-4" />
+                                </a>
+                            </div>
+                            
+                            <!-- Image Content -->
+                            <div class={`relative ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                                <div class="absolute inset-0 bg-indigo-600 rounded-3xl blur-3xl opacity-20 -z-10 group-hover:opacity-40 transition-opacity duration-700"></div>
+                                <div class="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
+                                    <Image src={service.image} 
+                                        alt={service.title}
+                                        loading={service.loading as "eager" | "lazy"}
+                                        class="w-full object-cover aspect-video lg:aspect-square transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                );
+            })}
+        </div>
+    </main>
+    
+    <Footer />
+</Layout>

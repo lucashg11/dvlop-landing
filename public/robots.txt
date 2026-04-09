@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dvlop.agency/sitemap-index.xml <!-- TODO: Update this URL when the website is deployed -->

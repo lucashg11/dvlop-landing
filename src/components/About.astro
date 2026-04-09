@@ -1,0 +1,79 @@
+---
+import { CircleCheck } from "@lucide/astro";
+
+const features = [
+    "Award-winning digital experiences",
+    "100% committed to performance",
+    "Scalable, maintainable code",
+    "Dedicated premium support",
+];
+import { Image } from "astro:assets";
+import aboutImage from "../assets/images/about.avif";
+---
+
+<section id="about" class="py-24 bg-slate-950 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div
+                    class="absolute inset-0 bg-primary rounded-3xl blur-3xl opacity-20 -z-10"
+                >
+                </div>
+                <Image
+                    src={aboutImage}
+                    alt="Our team working together"
+                    loading="lazy"
+                    class="rounded-3xl shadow-2xl border border-slate-800 object-cover aspect-4/3 w-full"
+                />
+                <div
+                    class="absolute -bottom-6 -right-6 bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl hidden sm:block"
+                >
+                    <div class="text-4xl font-extrabold text-primary mb-1">
+                        10+
+                    </div>
+                    <div class="text-light font-medium">Years Experience</div>
+                </div>
+            </div>
+
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-primary text-sm font-semibold tracking-wide uppercase mb-6"
+                >
+                    About Us
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">
+                    Driven by passion, <span class="text-primary"
+                        >defined by results.</span
+                    >
+                </h2>
+                <p class="text-lg text-light mb-8 leading-relaxed">
+                    We are a collective of digital craftsmen focused on creating
+                    software that stands out. Whether you need an intricate
+                    enterprise platform or a captivating brand experience, we
+                    bring deep technical expertise and an eye for pixel-perfect
+                    design to every project.
+                </p>
+
+                <div class="space-y-4 mb-10">
+                    {
+                        features.map((feature) => (
+                            <div class="flex items-center gap-3">
+                                <CircleCheck class="w-6 h-6 text-accent shrink-0" />
+                                <span class="text-light font-medium">
+                                    {feature}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <a
+                    href="/about"
+                    class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-primary text-light px-8 py-3.5 rounded-full font-medium transition-all border border-slate-700"
+                >
+                    Learn more about us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

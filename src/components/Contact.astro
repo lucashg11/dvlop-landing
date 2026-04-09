@@ -1,0 +1,217 @@
+---
+import { Send, MapPin, Mail, Phone } from "@lucide/astro";
+---
+
+<section id="contact"
+    class="py-24 bg-slate-900 border-t border-slate-800 relative overflow-hidden reveal"
+>
+    <!-- Decorative background -->
+    <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,var(--tw-gradient-stops))] from-indigo-900/20 via-slate-900 to-slate-900 -z-10"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold tracking-wide uppercase mb-6"
+                >
+                    Get in Touch
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">
+                    Let's discuss your next <span class="text-indigo-400"
+                        >project.</span>
+                </h2>
+                <p
+                    class="text-lg text-slate-400 mb-10 leading-relaxed max-w-lg"
+                >
+                    Whether you have a clear vision or just a rough idea, we're
+                    here to help you bring it to life. Fill out the form and
+                    we'll get back to you within 24 hours.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
+                        >
+                            <Mail class="w-6 h-6 text-indigo-400" />
+                        </div>
+                        <div>
+                            <h3 class="text-white font-medium mb-1 text-lg">
+                                Email Us
+                            </h3>
+                            <a
+                                href="mailto:hello@dvlop.agency"
+                                class="text-slate-400 hover:text-indigo-400 transition-colors"
+                                >hello@dvlop.agency</a
+                            >
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
+                        >
+                            <Phone class="w-6 h-6 text-indigo-400" />
+                        </div>
+                        <div>
+                            <h3 class="text-white font-medium mb-1 text-lg">
+                                Call Us
+                            </h3>
+                            <a
+                                href="tel:+1234567890"
+                                class="text-slate-400 hover:text-indigo-400 transition-colors"
+                                >+1 (234) 567-890</a
+                            >
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
+                        >
+                            <MapPin class="w-6 h-6 text-indigo-400" />
+                        </div>
+                        <div>
+                            <h3 class="text-white font-medium mb-1 text-lg">
+                                Visit Us
+                            </h3>
+                            <p class="text-slate-400">
+                                123 Innovation Drive<br />Tech City, TC 10010
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="bg-slate-950 p-8 md:p-10 rounded-3xl border border-slate-800 shadow-2xl relative"
+            >
+                <!-- Inner glow -->
+                <div
+                    class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/30 rounded-full blur-3xl pointer-events-none"
+                >
+                </div>
+
+                <form action="#" method="POST" class="relative z-10 space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label
+                                for="first-name"
+                                class="block text-sm font-medium text-slate-300"
+                                >First name</label
+                            >
+                            <input
+                                type="text"
+                                name="first-name"
+                                id="first-name"
+                                required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                                placeholder="John"
+                            />
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                for="last-name"
+                                class="block text-sm font-medium text-slate-300"
+                                >Last name</label
+                            >
+                            <input
+                                type="text"
+                                name="last-name"
+                                id="last-name"
+                                required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                                placeholder="Doe"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label
+                            for="email"
+                            class="block text-sm font-medium text-slate-300"
+                            >Email address</label
+                        >
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            required
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                            placeholder="john@company.com"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label
+                            for="budget"
+                            class="block text-sm font-medium text-slate-300"
+                            >Project Budget</label
+                        >
+                        <div class="relative">
+                            <select
+                                id="budget"
+                                name="budget"
+                                required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all appearance-none"
+                            >
+                                <option value="" disabled selected
+                                    >Select a range</option
+                                >
+                                <option value="5k-10k">$5k - $10k</option>
+                                <option value="10k-25k">$10k - $25k</option>
+                                <option value="25k-50k">$25k - $50k</option>
+                                <option value="50k+">$50k+</option>
+                            </select>
+                            <div
+                                class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none"
+                            >
+                                <svg
+                                    class="w-4 h-4 text-slate-400"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path></svg
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label
+                            for="message"
+                            class="block text-sm font-medium text-slate-300"
+                            >Project details</label
+                        >
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
+                            placeholder="Tell us about your goals, timeline, and requirements..."
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] mt-4"
+                    >
+                        Send Message
+                        <Send class="w-5 h-5" />
+                    </button>
+
+                    <p class="text-sm text-white0 text-center mt-4">
+                        By submitting this form, you agree to our privacy
+                        policy.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

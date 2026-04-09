@@ -1,0 +1,97 @@
+---
+import { ArrowRight } from "@lucide/astro";
+---
+
+<section
+    class="relative h-screen flex items-center justify-center pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden reveal"
+>
+    <!-- Premium Background Stack -->
+    <div class="absolute inset-0 -z-10 overflow-hidden bg-dark">
+        <!-- Base Radial Glow -->
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#6E44FF33,transparent_60%)]"
+        >
+        </div>
+
+        <!-- Animated Orbs -->
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-float"
+        >
+        </div>
+        <div
+            class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-accent/10 rounded-full blur-[100px] animate-float"
+            style="animation-delay: -5s;"
+        >
+        </div>
+
+        <!-- Grid Pattern Overlay -->
+        <div
+            class="absolute inset-0 bg-grid-pattern mask-[radial-gradient(ellipse_at_center,black,transparent_80%)] opacity-40"
+        >
+        </div>
+
+        <!-- Noise/Texture Overlay (Optional but premium) -->
+        <div
+            class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+        <!-- Badge -->
+        <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-accent text-sm font-medium mb-8 animate-fade-in-up"
+        >
+            <span class="flex h-2 w-2 relative">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
+                ></span>
+                <span
+                    class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+                ></span>
+            </span>
+            Available for new projects
+        </div>
+
+        <!-- Headline -->
+        <h1
+            class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 animate-fade-in-up reveal"
+            style="animation-delay: 100ms;"
+        >
+            We build <span
+                class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
+                >digital experiences</span
+            ><br class="hidden md:block" /> that convert.
+        </h1>
+
+        <!-- Subheading -->
+        <p
+            class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up"
+            style="animation-delay: 200ms;"
+        >
+            We are a premium web development agency specialized in crafting
+            lightning-fast, highly scalable, and beautifully designed digital
+            products.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div
+            class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+            style="animation-delay: 300ms;"
+        >
+            <a
+                href="/contact"
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-indigo-600 text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)]"
+            >
+                Start a Project
+                <ArrowRight class="w-5 h-5" />
+            </a>
+            <a
+                href="#work"
+                class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-3.5 rounded-full font-medium transition-all border border-slate-700"
+            >
+                View Our Work
+            </a>
+        </div>
+    </div>
+</section>

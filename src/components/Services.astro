@@ -1,0 +1,80 @@
+---
+import {
+    ArrowRight,
+    Paintbrush,
+    ShoppingCart,
+    TrendingUp,
+} from "@lucide/astro";
+import { CodeXml } from "@lucide/astro";
+
+const services = [
+    {
+        id: "custom-web-development",
+        title: "Custom Web Development",
+        description:
+            "Scalable and fast web applications built with modern frameworks and best practices.",
+        icon: CodeXml,
+    },
+    {
+        id: "ui-ux-design",
+        title: "UI/UX Design",
+        description:
+            "Pixel-perfect, user-centric designs that engage your audience and drive conversions.",
+        icon: Paintbrush,
+    },
+    {
+        id: "e-commerce-solutions",
+        title: "E-Commerce Solutions",
+        description:
+            "High-converting online stores optimized for performance and sales growth.",
+        icon: ShoppingCart,
+    },
+    {
+        id: "seo-performance",
+        title: "SEO & Performance",
+        description:
+            "Technical SEO and speed optimization to rank higher and deliver instant experiences.",
+        icon: TrendingUp,
+    },
+];
+---
+
+<section id="services" class="py-24 bg-slate-900 border-y border-slate-800 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Our Services</h2>
+            <p class="text-slate-400 text-lg">
+                Comprehensive digital solutions tailored to elevate your brand
+                and achieve your business goals.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+                services.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-accent/50 hover:bg-slate-900 transition-all hover:-translate-y-1 group flex flex-col h-full relative">
+                            <div class="grow">
+                                <Icon class="w-8 h-8 text-primary mb-6 group-hover:text-accent transition-colors" />
+                                <h3 class="text-xl font-bold mb-3">
+                                    {service.title}
+                                </h3>
+                                <p class="text-slate-400 leading-relaxed mb-6">
+                                    {service.description}
+                                </p>
+                            </div>
+                            <a
+                                href={`/services/#${service.id}`}
+                                class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors mt-auto before:absolute before:inset-0"
+                            >
+                                Learn more
+                                <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</section>
