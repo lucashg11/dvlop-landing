@@ -1,6 +1,6 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import SEO from '../components/SEO.astro';
+import { ClientRouter } from "astro:transitions";
+import SEO from "../components/SEO.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -12,12 +12,12 @@ interface Props {
 const {
 	title,
 	description = "A modern premium web development agency specializing in performant and beautiful digital experiences.",
-	image
+	image,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -32,8 +32,7 @@ const {
 		class="bg-slate-950 text-white antialiased selection:bg-indigo-600 selection:text-white"
 	>
 		<slot />
-	</body>
-	<script>
+	</body><script>
 		document.addEventListener("astro:page-load", () => {
 			const observerOptions = {
 				root: null,

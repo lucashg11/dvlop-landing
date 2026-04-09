@@ -10,42 +10,47 @@ import { CodeXml } from "@lucide/astro";
 const services = [
     {
         id: "custom-web-development",
-        title: "Custom Web Development",
+        title: "Desarrollo Web A Medida",
         description:
-            "Scalable and fast web applications built with modern frameworks and best practices.",
+            "Desarrollamos plataformas de alto rendimiento con Astro, Tailwind y Sanity. Menos peso, más velocidad, cero distracciones para tus clientes.",
         icon: CodeXml,
     },
     {
         id: "ui-ux-design",
-        title: "UI/UX Design",
+        title: "Diseño UI/UX",
         description:
-            "Pixel-perfect, user-centric designs that engage your audience and drive conversions.",
+            "Diseñamos interfaces intuitivas y atractivas que enamoran a tus usuarios y potencian tus conversiones.",
         icon: Paintbrush,
     },
     {
         id: "e-commerce-solutions",
-        title: "E-Commerce Solutions",
+        title: "Soluciones para E-Commerce",
         description:
-            "High-converting online stores optimized for performance and sales growth.",
+            "Tiendas online de alto rendimiento optimizadas para velocidad y crecimiento de ventas.",
         icon: ShoppingCart,
     },
     {
         id: "seo-performance",
         title: "SEO & Performance",
         description:
-            "Technical SEO and speed optimization to rank higher and deliver instant experiences.",
+            "SEO técnico y optimización de velocidad para posicionar más alto y ofrecer experiencias instantáneas.",
         icon: TrendingUp,
     },
 ];
 ---
 
-<section id="services" class="py-24 bg-slate-900 border-y border-slate-800 reveal">
+<section
+    id="services"
+    class="py-24 bg-slate-900 border-y border-slate-800 reveal"
+>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Our Services</h2>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">
+                Que te ofrecemos?
+            </h2>
             <p class="text-slate-400 text-lg">
-                Comprehensive digital solutions tailored to elevate your brand
-                and achieve your business goals.
+                Soluciones digitales integrales diseñadas para potenciar tu
+                marca y alcanzar tus objetivos de negocio.
             </p>
         </div>
 
@@ -68,7 +73,7 @@ const services = [
                                 href={`/services/#${service.id}`}
                                 class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors mt-auto before:absolute before:inset-0"
                             >
-                                Learn more
+                                Conocé más
                                 <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </a>
                         </div>

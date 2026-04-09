@@ -2,7 +2,8 @@
 import { Send, MapPin, Mail, Phone } from "@lucide/astro";
 ---
 
-<section id="contact"
+<section
+    id="contact"
     class="py-24 bg-slate-900 border-t border-slate-800 relative overflow-hidden reveal"
 >
     <!-- Decorative background -->
@@ -17,18 +18,20 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold tracking-wide uppercase mb-6"
                 >
-                    Get in Touch
+                    Contactanos
                 </div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">
-                    Let's discuss your next <span class="text-indigo-400"
-                        >project.</span>
+                    Hablemos de tu próximo <span class="text-indigo-400"
+                        >proyecto.</span
+                    >
                 </h2>
                 <p
                     class="text-lg text-slate-400 mb-10 leading-relaxed max-w-lg"
                 >
-                    Whether you have a clear vision or just a rough idea, we're
-                    here to help you bring it to life. Fill out the form and
-                    we'll get back to you within 24 hours.
+                    Ya sea que tengas una visión clara o solo una idea
+                    aproximada, estamos aquí para ayudarte a darle vida.
+                    Completa el formulario y te responderemos en menos de 24
+                    horas.
                 </p>
 
                 <div class="space-y-8">
@@ -40,7 +43,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         </div>
                         <div>
                             <h3 class="text-white font-medium mb-1 text-lg">
-                                Email Us
+                                Envíanos un correo
                             </h3>
                             <a
                                 href="mailto:hello@dvlop.agency"
@@ -57,7 +60,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         </div>
                         <div>
                             <h3 class="text-white font-medium mb-1 text-lg">
-                                Call Us
+                                Llámanos
                             </h3>
                             <a
                                 href="tel:+1234567890"
@@ -74,7 +77,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         </div>
                         <div>
                             <h3 class="text-white font-medium mb-1 text-lg">
-                                Visit Us
+                                Visítanos
                             </h3>
                             <p class="text-slate-400">
                                 123 Innovation Drive<br />Tech City, TC 10010
@@ -99,7 +102,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                             <label
                                 for="first-name"
                                 class="block text-sm font-medium text-slate-300"
-                                >First name</label
+                                >Nombre</label
                             >
                             <input
                                 type="text"
@@ -114,7 +117,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                             <label
                                 for="last-name"
                                 class="block text-sm font-medium text-slate-300"
-                                >Last name</label
+                                >Apellido</label
                             >
                             <input
                                 type="text"
@@ -131,7 +134,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         <label
                             for="email"
                             class="block text-sm font-medium text-slate-300"
-                            >Email address</label
+                            >Email</label
                         >
                         <input
                             type="email"
@@ -147,7 +150,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         <label
                             for="budget"
                             class="block text-sm font-medium text-slate-300"
-                            >Project Budget</label
+                            >Presupuesto</label
                         >
                         <div class="relative">
                             <select
@@ -157,7 +160,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                                 class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all appearance-none"
                             >
                                 <option value="" disabled selected
-                                    >Select a range</option
+                                    >Selecciona un rango</option
                                 >
                                 <option value="5k-10k">$5k - $10k</option>
                                 <option value="10k-25k">$10k - $25k</option>
@@ -186,7 +189,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         <label
                             for="message"
                             class="block text-sm font-medium text-slate-300"
-                            >Project details</label
+                            >Detalles del proyecto</label
                         >
                         <textarea
                             id="message"
@@ -202,13 +205,13 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         type="submit"
                         class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] mt-4"
                     >
-                        Send Message
+                        Enviar Mensaje
                         <Send class="w-5 h-5" />
                     </button>
 
                     <p class="text-sm text-white0 text-center mt-4">
-                        By submitting this form, you agree to our privacy
-                        policy.
+                        Al enviar este formulario, aceptas nuestra política de
+                        privacidad.
                     </p>
                 </form>
             </div>
