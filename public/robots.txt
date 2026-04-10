@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dvlop.agency/sitemap-index.xml <!-- TODO: Update this URL when the website is deployed -->
+Sitemap: https://dvlop-landing.netlify.app/ <!-- TODO: Update this URL when the website is deployed -->
