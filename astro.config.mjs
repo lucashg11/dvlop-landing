@@ -6,8 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lucashg11.github.io',
-  base: '/dvlop-landing',
+  site: 'https://dvlop-landing.netlify.app',
   image: {
     domains: ["images.unsplash.com"]
   },
