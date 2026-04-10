@@ -1,5 +1,7 @@
 ---
 import { CircleCheck } from "@lucide/astro";
+import { Image } from "astro:assets";
+import aboutImage from "../assets/images/about.avif";
 
 const features = [
     "Experiencias digitales premiadas",
@@ -7,8 +9,6 @@ const features = [
     "Código escalable y mantenible",
     "Soporte premium dedicado",
 ];
-import { Image } from "astro:assets";
-import aboutImage from "../assets/images/about.avif";
 ---
 
 <section id="about" class="py-24 bg-slate-950 reveal">
@@ -42,7 +42,8 @@ import aboutImage from "../assets/images/about.avif";
                     Sobre Nosotros
                 </div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">
-                    Impulsados por la pasión, <span class="text-primary"
+                    Impulsados por la pasión, <span
+                        class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
                         >definidos por los resultados.</span
                     >
                 </h2>

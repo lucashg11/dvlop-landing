@@ -36,3 +36,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 <!-- Sitemap integration standard -->
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DVLOP",
+  "url": Astro.site,
+  "logo": new URL('/favicon.svg', Astro.site),
+  "description": description,
+  "sameAs": [
+    "https://twitter.com/dvlop",
+    "https://linkedin.com/company/dvlop"
+  ]
+})} />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": title,
+  "url": Astro.site,
+  "description": description
+})} />
+

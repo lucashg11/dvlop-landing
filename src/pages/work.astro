@@ -2,23 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import CTA from '../components/CTA.astro';
-import { ArrowUpRight, Clock, Target, CheckCircle2, CircleCheck } from "@lucide/astro";
+import { Clock, Target, CircleCheck } from "@lucide/astro";
 
 const projects = [
     {
         id: "ecommerce-replatforming",
-        title: "E-Commerce Replatforming",
+        title: "Rediseño E-Commerce",
         category: "Web Development",
         image: ecommerceReplatformingImg,
-        timeline: "12 Weeks",
-        problem: "The client was stuck on a legacy monolithic platform that caused 5+ second page load times, resulting in a disastrously high cart abandonment rate and poor SEO rankings.",
+        timeline: "1 año",
+        problem: "El cliente estaba atrapado en una plataforma monolítica heredada que causaba tiempos de carga de página de más de 5 segundos, lo que resultaba en una tasa de abandono de carritos desastrosamente alta y una mala clasificación en SEO.",
         solution: [
-            "Migrated the entire catalog to a Headless Shopify architecture.",
-            "Built a blazing-fast frontend using Next.js and Tailwind CSS.",
-            "Implemented edge-caching resulting in sub-second load times.",
-            "Integrated a robust CMS for the marketing team to freely manage content."
+            "Migramos todo el catálogo a una arquitectura Headless Shopify.",
+            "Construimos un frontend ultrarrápido usando Next.js y Tailwind CSS.",
+            "Implementamos edge-caching resultando en tiempos de carga inferiores a un segundo.",
+            "Integramos un CMS robusto para que el equipo de marketing gestionara el contenido libremente."
         ],
-        results: "Conversion rates increased by 42% and mobile traffic bounce rate dropped by 60% within the first month.",
+        results: "Las tasas de conversión aumentaron un 42% y la tasa de rebote del tráfico móvil disminuyó un 60% en el primer mes.",
         loading: "eager"
     },
     {
@@ -26,47 +26,47 @@ const projects = [
         title: "Fintech Dashboard",
         category: "UI/UX Design",
         image: fintechDashboardImg,
-        timeline: "8 Weeks",
-        problem: "A promising fintech startup had a powerful backend but their user interface was intimidating, cluttered, and caused massive churn among non-technical users.",
+        timeline: "2 Meses",
+        problem: "Una startup fintech prometedora tenía un backend potente pero su interfaz de usuario era intimidante, estaba desordenada y causaba una gran deserción entre los usuarios no técnicos.",
         solution: [
-            "Conducted extensive user research to understand pain points.",
-            "Redesigned the entire user flow to prioritize critical actions.",
-            "Created a scalable design system using Figma & Tailwind CSS.",
-            "Implemented dark mode and customizable widget layouts."
+            "Realizamos una investigación exhaustiva de usuarios para comprender los puntos débiles.",
+            "Rediseñamos todo el flujo de usuario para priorizar las acciones críticas.",
+            "Creamos un sistema de diseño escalable usando Figma & Tailwind CSS.",
+            "Implementamos modo oscuro y diseños de widgets personalizables."
         ],
-        results: "User engagement time increased by 35% and customer support tickets related to UI confusion dropped to near zero.",
+        results: "El tiempo de participación del usuario aumentó un 35% y los tickets de soporte al cliente relacionados con la confusión de la interfaz de usuario se redujeron a casi cero.",
         loading: "lazy"
     },
     {
         id: "corporate-identity",
-        title: "Corporate Identity",
+        title: "Identidad Corporativa",
         category: "Branding",
         image: corporateIdentityImg,
-        timeline: "6 Weeks",
-        problem: "A traditional B2B company needed to modernize their visual language to attract younger enterprise clients without alienating their loyal customer base.",
+        timeline: "2 Meses",
+        problem: "Una empresa B2B tradicional necesitaba modernizar su lenguaje visual para atraer clientes empresariales más jóvenes sin alienar a su base de clientes leales.",
         solution: [
-            "Refined the logo mark to look striking in digital formats.",
-            "Developed a modern, accessible color palette and typography system.",
-            "Created comprehensive brand guidelines for marketing teams.",
-            "Designed and developed a cohesive landing page to launch the brand."
+            "Refinamos el imagotipo para que luzca impactante en formatos digitales.",
+            "Desarrollamos una paleta de colores y un sistema tipográfico modernos y accesibles.",
+            "Creamos guías de marca completas para los equipos de marketing.",
+            "Diseñamos y desarrollamos una página de aterrizaje cohesiva para lanzar la marca."
         ],
         results: "The rebrand contributed to a 20% increase in inbound enterprise leads in Q3.",
         loading: "lazy"
     },
     {
         id: "healthcare-portal",
-        title: "Healthcare Portal",
+        title: "Portal de Salud",
         category: "Web App",
         image: healthcarePortalImg,
-        timeline: "16 Weeks",
-        problem: "Patients were unable to access their records seamlessly, leading to overloaded phone lines and massive administrative overhead for the clinic.",
+        timeline: "4 Meses",
+        problem: "Los pacientes no podían acceder a sus registros sin problemas, lo que provocaba líneas telefónicas saturadas y una enorme carga administrativa para la clínica.",
         solution: [
-            "Built a secure, HIPAA-compliant patient dashboard.",
-            "Integrated API bridges with their existing legacy on-premise medical software.",
-            "Developed self-serve appointment booking and document downloads.",
-            "Ensured strict end-to-end encryption and compliance."
+            "Construimos un panel de control seguro y compatible con HIPAA para pacientes.",
+            "Integramos puentes API con su software médico local heredado existente.",
+            "Desarrollamos reservas de citas autoservicio y descargas de documentos.",
+            "Garantizamos cifrado de extremo a extremo estricto y cumplimiento normativo."
         ],
-        results: "Administrative call volume dropped by 55%, saving thousands of human-hours annually.",
+        results: "El volumen de llamadas administrativas se redujo en un 55%, ahorrando miles de horas humanas al año.",
         loading: "lazy"
     }
 ];

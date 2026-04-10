@@ -1,5 +1,29 @@
 ---
-import { Send, MapPin, Mail, Phone } from "@lucide/astro";
+import { Icon } from "astro-icon/components";
+
+const contactData = [
+    {
+        id: "email",
+        title: "Envíanos un correo",
+        description: "Estamos a un click",
+        link: "mailto:hello@",
+        icon: "ri:mail-fill",
+    },
+    {
+        id: "phone",
+        title: "Llámanos",
+        description: "O escribinos un mensaje",
+        link: "https://wa.me/5491162485810",
+        icon: "ri:phone-fill",
+    },
+    {
+        id: "location",
+        title: "Visítanos",
+        description: "En nuestras oficinas",
+        link: "calle Buena Vida 4321",
+        icon: "ri:map-pin-fill",
+    },
+];
 ---
 
 <section
@@ -21,7 +45,8 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                     Contactanos
                 </div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">
-                    Hablemos de tu próximo <span class="text-indigo-400"
+                    Hablemos de tu próximo <span
+                        class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
                         >proyecto.</span
                     >
                 </h2>
@@ -35,55 +60,35 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                 </p>
 
                 <div class="space-y-8">
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
-                        >
-                            <Mail class="w-6 h-6 text-indigo-400" />
-                        </div>
-                        <div>
-                            <h3 class="text-white font-medium mb-1 text-lg">
-                                Envíanos un correo
-                            </h3>
-                            <a
-                                href="mailto:hello@dvlop.agency"
-                                class="text-slate-400 hover:text-indigo-400 transition-colors"
-                                >hello@dvlop.agency</a
-                            >
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
-                        >
-                            <Phone class="w-6 h-6 text-indigo-400" />
-                        </div>
-                        <div>
-                            <h3 class="text-white font-medium mb-1 text-lg">
-                                Llámanos
-                            </h3>
-                            <a
-                                href="https://wa.me/5491162485810"
-                                class="text-slate-400 hover:text-indigo-400 transition-colors"
-                                >+54 9 11 6248-5810</a
-                            >
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors"
-                        >
-                            <MapPin class="w-6 h-6 text-indigo-400" />
-                        </div>
-                        <div>
-                            <h3 class="text-white font-medium mb-1 text-lg">
-                                Visítanos
-                            </h3>
-                            <p class="text-slate-400">
-                                123 Innovation Drive<br />Tech City, TC 10010
-                            </p>
-                        </div>
-                    </div>
+                    {
+                        contactData.map((contact) => (
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors">
+                                    <Icon
+                                        name={contact.icon}
+                                        class="w-6 h-6 text-indigo-400"
+                                    />
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium mb-1 text-lg">
+                                        {contact.title}
+                                    </h3>
+                                    {contact.id === "location" ? (
+                                        <p class="text-slate-400">
+                                            {contact.description}
+                                        </p>
+                                    ) : (
+                                        <a
+                                            href={contact.link}
+                                            class="text-slate-400 hover:text-indigo-400 transition-colors"
+                                        >
+                                            {contact.description}
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
 
@@ -206,7 +211,7 @@ import { Send, MapPin, Mail, Phone } from "@lucide/astro";
                         class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] mt-4"
                     >
                         Enviar Mensaje
-                        <Send class="w-5 h-5" />
+                        <Icon name="ri:send-plane-fill" class="w-5 h-5" />
                     </button>
 
                     <p class="text-sm text-white0 text-center mt-4">
