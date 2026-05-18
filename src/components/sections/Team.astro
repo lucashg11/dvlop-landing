@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+export interface TeamMember {
+  name: string
+  role: string
+  image: ImageMetadata
+  loading: "eager" | "lazy"
+}
+
+export interface Props {
+  members: TeamMember[]
+}
+const { members } = Astro.props;
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 reveal">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal font-heading">Conoce al Equipo</h2>
+    <p class="text-muted text-lg">El talento senior responsable de la arquitectura y el diseño de su presencia digital.</p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {members.map((member) => (
+      <div class="group">
+        <div class="relative overflow-hidden mb-6 rounded-2xl aspect-3/4">
+          <div class="absolute inset-0 bg-void/20 group-hover:bg-transparent transition-colors z-10" />
+          <Image
+            src={member.image}
+            alt={member.name}
+            inferSize={true}
+            loading={member.loading}
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out grayscale group-hover:grayscale-0"
+          />
+        </div>
+        <h3 class="text-xl font-bold mb-1 font-heading">{member.name}</h3>
+        <p class="text-accent font-medium">{member.role}</p>
+      </div>
+    ))}
+  </div>
+</section>

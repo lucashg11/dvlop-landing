@@ -1,150 +1,112 @@
 ---
-import { CodeXml } from "@lucide/astro";
 import { Icon } from "astro-icon/components";
+import { siteConfig, footerLinks } from "../data/site";
 
 const currentYear = new Date().getFullYear();
-
-const sitemap = [
-    { name: "Inicio", href: "/" },
-    { name: "Servicios", href: "/services" },
-    { name: "Nuestro Trabajo", href: "/work" },
-    { name: "Sobre Nosotros", href: "/about" },
-    { name: "Contacto", href: "/contact" },
-];
-
-const socials = [
-    {
-        name: "Twitter",
-        icon: "ri:twitter-x-fill",
-        href: "https://twitter.com/dvlopagency",
-    },
-    {
-        name: "Instagram",
-        icon: "ri:instagram-fill",
-        href: "https://instagram.com/dvlopagency",
-    },
-    {
-        name: "LinkedIn",
-        icon: "ri:linkedin-fill",
-        href: "https://linkedin.com/company/dvlopagency",
-    },
-    {
-        name: "GitHub",
-        icon: "ri:github-fill",
-        href: "https://github.com/dvlopagency",
-    },
-];
 ---
 
-<footer class="bg-dark pt-20 pb-10 border-t border-slate-900 reveal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
-            <!-- Brand -->
-            <div class="col-span-1 md:col-span-2">
-                <a href="/" class="flex items-center gap-2 mb-6 w-fit">
-                    <CodeXml class="w-8 h-8 text-primary" />
-                    <span class="font-bold text-2xl tracking-tight text-white"
-                        >DVLOP</span
-                    >
-                </a>
-                <p class="text-light/70 max-w-sm leading-relaxed mb-8">
-                    Una agencia premium de productos digitales dedicada a crear
-                    experiencias web personalizadas que eleven las marcas y
-                    impulsen el crecimiento escalable.
-                </p>
-                <!-- Social Links -->
-                <div class="flex items-center gap-4">
-                    {
-                        socials.map((social) => (
-                            <a
-                                href={social.href}
-                                aria-label={social.name}
-                                class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent hover:bg-accent/10 transition-all group"
-                            >
-                                <Icon
-                                    name={social.icon}
-                                    class="w-5 h-5 group-hover:scale-110 transition-transform"
-                                />
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-
-            <!-- Sitemap -->
-            <div>
-                <h3
-                    class="text-white font-bold mb-6 tracking-wide uppercase text-sm"
-                >
-                    Site Map
-                </h3>
-                <ul class="space-y-4">
-                    {
-                        sitemap.map((link) => (
-                            <li>
-                                <a
-                                    href={link.href}
-                                    class="text-light/70 hover:text-accent transition-colors font-medium"
-                                >
-                                    {link.name}
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-
-            <!-- Contact Box -->
-            <div>
-                <h3
-                    class="text-white font-bold mb-6 tracking-wide uppercase text-sm"
-                >
-                    Get in Touch
-                </h3>
-                <ul class="space-y-4">
-                    <li class="text-light/70">
-                        123 Innovation Drive<br />
-                        Tech City, TC 10010
-                    </li>
-                    <li>
-                        <a
-                            href="mailto:hello@dvlop.agency"
-                            class="text-light/70 hover:text-accent transition-colors"
-                        >
-                            hello@dvlop.agency
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="tel:+1234567890"
-                            class="text-light/70 hover:text-accent transition-colors"
-                        >
-                            +1 (234) 567-890
-                        </a>
-                    </li>
-                </ul>
-            </div>
+<footer class="bg-void pt-20 pb-10 border-t border-primary/10 reveal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+      <div class="col-span-1 md:col-span-2">
+        <a href="/" class="flex items-center gap-2 mb-6 w-fit">
+          <p
+            class="font-mono font-extrabold text-2xl tracking-tight text-ivory"
+          >
+            LUCAS<span
+              class="bg-linear-to-r from-primary to-accent text-transparent bg-clip-text"
+              >＜DEV∕＞</span
+            >
+          </p>
+        </a>
+        <p class="text-ivory/60 max-w-sm leading-relaxed mb-8 font-mono">
+          {siteConfig.description}
+        </p>
+        <div class="flex items-center gap-4">
+          {
+            siteConfig.socials.map((social) => (
+              <a
+                href={social.href}
+                aria-label={social.name}
+                class="w-10 h-10 rounded-full bg-surface border border-primary/10 flex items-center justify-center text-muted hover:text-accent hover:border-accent/30 hover:bg-accent/10 transition-all group"
+              >
+                <Icon
+                  name={social.icon}
+                  class="w-5 h-5 group-hover:scale-110 transition-transform"
+                />
+              </a>
+            ))
+          }
         </div>
+      </div>
 
-        <!-- Trademark and Copyright -->
-        <div
-            class="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4"
+      <div>
+        <h3
+          class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
         >
-            <p class="text-light/50 text-sm">
-                &copy; {currentYear} DVLOP Agency&trade;. Todos los derechos reservados.
-            </p>
-            <div class="flex items-center gap-6 text-sm text-light/50">
+          Mapa del Sitio
+        </h3>
+        <ul class="space-y-4">
+          {
+            footerLinks.map((link) => (
+              <li>
                 <a
-                    href="/privacy-policy"
-                    class="hover:text-white transition-colors"
-                    >Política de Privacidad</a
+                  href={link.href}
+                  class="text-ivory/60 hover:text-primary transition-colors font-medium"
                 >
-                <a
-                    href="/terms-of-service"
-                    class="hover:text-white transition-colors"
-                    >Términos de Servicio</a
-                >
-            </div>
-        </div>
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3
+          class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
+        >
+          Ubicación
+        </h3>
+        <ul class="space-y-4 font-mono">
+          <li class="text-ivory/60">
+            {siteConfig.address[0]}<br />
+            {siteConfig.address[1]}
+          </li>
+          <li>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              class="text-ivory/60 hover:text-primary transition-colors"
+            >
+              {siteConfig.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${siteConfig.phone}`}
+              class="text-ivory/60 hover:text-primary transition-colors"
+            >
+              {siteConfig.phone}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <div
+      class="pt-8 border-t border-primary/10 flex flex-col md:flex-row items-center justify-between gap-4"
+    >
+      <p class="text-muted text-sm">
+        &copy; {currentYear} LUCAS＜DEV∕＞ &trade;. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-6 text-sm text-muted">
+        <a href="/privacy-policy" class="hover:text-ivory transition-colors"
+          >Política de Privacidad</a
+        >
+        <a href="/terms-of-service" class="hover:text-ivory transition-colors"
+          >Términos de Servicio</a
+        >
+      </div>
+    </div>
+  </div>
 </footer>

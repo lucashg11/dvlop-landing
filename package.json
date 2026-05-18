@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/instrument-sans": "^5.2.8",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
+    "@fontsource/dm-mono": "^5.2.7",
     "@iconify-json/ri": "^1.2.10",
     "@lucide/astro": "^1.8.0",
     "@tailwindcss/vite": "^4.2.2",

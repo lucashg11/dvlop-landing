@@ -1,0 +1,27 @@
+---
+import Badge from "./Badge.astro";
+
+export interface Props {
+  badge?: string
+  title: string
+  description?: string
+  align?: "center" | "left"
+  class?: string
+}
+
+const { badge, title, description, align = "center", class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={[
+    align === "center" ? "text-center max-w-3xl mx-auto" : "",
+    "mb-16",
+    className,
+  ]}
+>
+  {badge && <Badge text={badge} />}
+  <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">{title}</h2>
+  {description && (
+    <p class="text-muted text-lg">{description}</p>
+  )}
+</div>

@@ -7,17 +7,18 @@ import About from "../components/About.astro";
 import Work from "../components/Work.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+import { services } from "../data/services";
+import { projects } from "../data/projects";
 ---
 
-<Layout title="DVLOP - Premium Web Development Agency">
-	<Header />
-	<main>
-		<Hero />
-		<Services />
-		<About />
-		<Work />
-		<Contact />
-	</main>
-
-	<Footer />
+<Layout title="LUCAS <DEV/> - Sitios Web que Traen Clientes">
+  <Header />
+  <main>
+    <Hero />
+    <Services services={services} />
+    <Work projects={projects} />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>

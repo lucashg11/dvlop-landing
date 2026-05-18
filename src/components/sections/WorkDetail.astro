@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import { ICONS } from "../../data/icons";
+import CTA from "../CTA.astro";
+import Badge from "../ui/Badge.astro";
+import GradientText from "../ui/GradientText.astro";
+import type { Project } from "../../data/projects";
+
+export interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+---
+
+<main class="pt-32 pb-24">
+  <section
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 reveal"
+  >
+    <Badge text="Proyectos" />
+    <h1
+      class="text-5xl md:text-7xl font-extrabold mb-6 reveal font-display"
+      transition:name="work-title"
+    >
+      Sitios que <GradientText>construí</GradientText>
+    </h1>
+    <p class="text-xl text-ivory/60 max-w-3xl mx-auto font-mono">
+      Explorar cómo resuelvo problemas reales. El desafío que cada cliente
+      tenía, cómo lo solucionamos, y qué cambió.
+    </p>
+  </section>
+
+  <div class="space-y-32">
+    {
+      projects.map((project) => {
+        const CircleCheck = ICONS["circle-check"];
+        const Clock = ICONS["clock"];
+
+        return (
+          <section
+            id={project.id}
+            class="scroll-mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group reveal"
+          >
+            <div class="bg-surface border border-primary/10 rounded-3xl overflow-hidden p-8 lg:p-12">
+              <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="order-2 lg:order-1">
+                  <div class="flex items-center gap-4 mb-6">
+                    <span class="text-accent font-medium uppercase tracking-wider text-sm">
+                      {project.category}
+                    </span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-muted" />
+                    <div class="flex items-center gap-2 text-muted text-sm font-medium">
+                      {Clock && <Clock class="w-4 h-4" />}
+                      {project.timeline}
+                    </div>
+                  </div>
+
+                  <h2 class="text-3xl md:text-4xl font-bold text-ivory mb-8 group-hover:text-primary transition-colors reveal font-heading">
+                    {project.title}
+                  </h2>
+
+                  <div class="mb-8">
+                    <h3 class="flex items-center gap-2 text-lg font-bold text-ivory mb-3 font-heading">
+                      <svg
+                        class="w-5 h-5 text-error"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M8 8l8 8M16 8l-8 8"
+                        />
+                      </svg>
+                      El Problema
+                    </h3>
+                    <p class="text-ivory/70 leading-relaxed font-mono">
+                      {project.problem}
+                    </p>
+                  </div>
+
+                  <div class="mb-8">
+                    <h3 class="flex items-center gap-2 text-lg font-bold text-ivory mb-4 font-heading">
+                      {CircleCheck && (
+                        <CircleCheck class="w-5 h-5 text-success" />
+                      )}
+                      La Solucion
+                    </h3>
+                    <ul class="space-y-3">
+                      {project.solution.map((item) => (
+                        <li class="flex items-start gap-3">
+                          <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                          <span class="text-ivory/70 font-mono">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="p-6 bg-accent/10 border border-accent/20 rounded-2xl">
+                    <h4 class="text-accent font-bold mb-2 font-heading">
+                      El Resultado
+                    </h4>
+                    <p class="text-ivory font-medium">{project.results}</p>
+                  </div>
+                </div>
+
+                <div class="order-1 lg:order-2 relative aspect-video lg:aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-primary/10">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    loading={project.loading}
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    transition:name={`project-image-${project.id}`}
+                  />
+                  <div class="absolute inset-0 border border-ivory/10 rounded-2xl z-10 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+
+  <CTA />
+</main>

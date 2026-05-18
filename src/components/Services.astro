@@ -1,85 +1,75 @@
 ---
-import {
-    ArrowRight,
-    Paintbrush,
-    ShoppingCart,
-    TrendingUp,
-} from "@lucide/astro";
-import { CodeXml } from "@lucide/astro";
-
-const services = [
-    {
-        id: "custom-web-development",
-        title: "Desarrollo Web A Medida",
-        description:
-            "Desarrollamos plataformas de alto rendimiento con Astro, Tailwind y Sanity. Menos peso, más velocidad, cero distracciones para tus clientes.",
-        icon: CodeXml,
-    },
-    {
-        id: "ui-ux-design",
-        title: "Diseño UI/UX",
-        description:
-            "Diseñamos interfaces intuitivas y atractivas que enamoran a tus usuarios y potencian tus conversiones.",
-        icon: Paintbrush,
-    },
-    {
-        id: "e-commerce-solutions",
-        title: "Soluciones para E-Commerce",
-        description:
-            "Tiendas online de alto rendimiento optimizadas para velocidad y crecimiento de ventas.",
-        icon: ShoppingCart,
-    },
-    {
-        id: "seo-performance",
-        title: "SEO & Performance",
-        description:
-            "SEO técnico y optimización de velocidad para posicionar más alto y ofrecer experiencias instantáneas.",
-        icon: TrendingUp,
-    },
-];
+import { ICONS } from "../data/icons";
+import type { Service } from "../data/services";
+import Badge from "./ui/Badge.astro";
+import GradientText from "./ui/GradientText.astro";
+export interface Props {
+  services: Service[];
+}
+const { services } = Astro.props;
 ---
 
 <section
-    id="services"
-    class="py-24 bg-slate-900 border-y border-slate-800 reveal"
+  id="services"
+  class="py-24 bg-surface border-y border-primary/10 reveal"
 >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">
-                Que te ofrecemos?
-            </h2>
-            <p class="text-slate-400 text-lg">
-                Soluciones digitales integrales diseñadas para potenciar tu
-                marca y alcanzar tus objetivos de negocio.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {
-                services.map((service) => {
-                    const Icon = service.icon;
-                    return (
-                        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 hover:border-accent/50 hover:bg-slate-900 transition-all hover:-translate-y-1 group flex flex-col h-full relative">
-                            <div class="grow">
-                                <Icon class="w-8 h-8 text-primary mb-6 group-hover:text-accent transition-colors" />
-                                <h3 class="text-xl font-bold mb-3">
-                                    {service.title}
-                                </h3>
-                                <p class="text-slate-400 leading-relaxed mb-6">
-                                    {service.description}
-                                </p>
-                            </div>
-                            <a
-                                href={`/services/#${service.id}`}
-                                class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors mt-auto before:absolute before:inset-0"
-                            >
-                                Conocé más
-                                <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </a>
-                        </div>
-                    );
-                })
-            }
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <Badge text="Lo que hago" variant="secondary" />
+      <h2
+        class="text-3xl md:text-5xl font-bold mb-4 reveal font-heading leading-tight"
+      >
+        Del problema a la solución, <br />
+        <GradientText>sin complicaciones.</GradientText>
+      </h2>
+      <p class="text-muted text-lg">
+        Me especializo en productos digitales concretos, sin vueltas. Cada
+        servicio está pensado para resolver algo específico que le duele a tu
+        negocio.
+      </p>
     </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        services.map((service) => {
+          const Icon = ICONS[service.icon];
+          return (
+            <div class="bg-void p-8 rounded-2xl border border-primary/10 hover:border-accent/30 hover:bg-surface transition-all hover:-translate-y-1 group flex flex-col h-full relative">
+              <div class="grow">
+                {/*Icon && (
+                  <Icon class="w-8 h-8 text-primary mb-6 group-hover:text-accent transition-colors" />
+                )*/}
+                <Badge text={service.price} />
+                <h3 class="text-xl font-bold mb-3 font-heading">
+                  {service.title}
+                </h3>
+                <p class="text-muted leading-relaxed mb-6">
+                  {service.description}
+                </p>
+              </div>
+              <a
+                href={`/services/#${service.id}`}
+                class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors mt-auto before:absolute before:inset-0"
+              >
+                Conocé más
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
 </section>

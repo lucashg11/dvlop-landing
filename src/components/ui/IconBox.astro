@@ -1,0 +1,35 @@
+---
+import { ICONS } from "../../data/icons";
+
+export interface Props {
+  icon: string
+  size?: "sm" | "md" | "lg"
+  class?: string
+}
+
+const { icon, size = "md", class: className = "" } = Astro.props;
+
+const sizes = {
+  sm: "w-10 h-10",
+  md: "w-12 h-12",
+  lg: "w-14 h-14",
+};
+
+const iconSizes = {
+  sm: "w-5 h-5",
+  md: "w-6 h-6",
+  lg: "w-7 h-7",
+};
+
+const Icon = ICONS[icon];
+---
+
+<div
+  class:list={[
+    "rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors",
+    sizes[size],
+    className,
+  ]}
+>
+  {Icon && <Icon class:list={["text-primary", iconSizes[size]]} />}
+</div>

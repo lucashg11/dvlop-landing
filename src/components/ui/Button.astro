@@ -1,0 +1,52 @@
+---
+import { ICONS } from "../../data/icons";
+
+export interface Props {
+  href?: string
+  variant?: "primary" | "secondary" | "outline" | "ghost"
+  size?: "sm" | "md" | "lg"
+  icon?: string
+  class?: string
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  icon,
+  class: className = "",
+} = Astro.props;
+
+const sizes = {
+  sm: "px-5 py-2.5 text-sm",
+  md: "px-8 py-3.5",
+  lg: "px-8 py-4 text-lg",
+};
+
+const variantsStyles = {
+  primary:
+    "bg-cta-violet text-ivory shadow-[0_0_20px_rgba(110,86,207,0.3)] hover:shadow-[0_0_30px_rgba(110,86,207,0.5)]",
+  secondary:
+    "bg-surface hover:bg-primary text-ivory border border-primary/20",
+  outline:
+    "bg-transparent hover:bg-primary/10 text-ivory border border-primary/30",
+  ghost:
+    "text-ivory/60 hover:text-primary",
+};
+
+const Tag = href ? "a" : "button";
+const IconComponent = icon ? ICONS[icon] : null;
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all",
+    sizes[size],
+    variantsStyles[variant],
+    className,
+  ]}
+>
+  <slot />
+  {IconComponent && <IconComponent class="w-5 h-5" />}
+</Tag>

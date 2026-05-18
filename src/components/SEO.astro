@@ -9,7 +9,7 @@ interface Props {
 const {
   title,
   description,
-  image = '/og-image.webp', // Default fallback OG image
+  image = "/og-image.webp", // Default fallback OG image
   article = false,
 } = Astro.props;
 
@@ -21,7 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:type" content={article ? "article" : "website"} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -38,24 +38,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- JSON-LD Structured Data -->
-<script type="application/ld+json" is:inline set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "DVLOP",
-  "url": Astro.site,
-  "logo": new URL('/favicon.svg', Astro.site),
-  "description": description,
-  "sameAs": [
-    "https://twitter.com/dvlop",
-    "https://linkedin.com/company/dvlop"
-  ]
-})} />
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "LUCAS <DEV/>",
+    url: Astro.site,
+    logo: new URL("/favicon.svg", Astro.site),
+    description: description,
+    sameAs: [
+      "https://twitter.com/lucasdev",
+      "https://linkedin.com/in/lucasdev",
+    ],
+  })}
+/>
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": title,
-  "url": Astro.site,
-  "description": description
-})} />
-
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: title,
+    url: Astro.site,
+    description: description,
+  })}
+/>

@@ -3,256 +3,114 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
-import aboutImg from "../assets/images/about-page.avif";
-import teamMember1 from "../assets/images/team-avatar-1.avif";
-import teamMember2 from "../assets/images/team-avatar-2.avif";
-import teamMember3 from "../assets/images/team-avatar-3.avif";
-import teamMember4 from "../assets/images/team-avatar-4.avif";
+import Team from "../components/sections/Team.astro";
+import Values from "../components/sections/Values.astro";
+import Badge from "../components/ui/Badge.astro";
+import GradientText from "../components/ui/GradientText.astro";
 import { Image } from "astro:assets";
-import { Target, Users, Zap, Award } from "@lucide/astro";
-
-const values = [
-    {
-        title: "Enfoque centrado en el cliente",
-        description:
-            "Tus objetivos comerciales son nuestra principal directiva. No solo construimos software; construimos soluciones que resuelven tus desafíos operativos específicos.",
-        icon: Target,
-    },
-    {
-        title: "Calidad sin concesiones",
-        description:
-            "Nos obsesionamos con los detalles. La arquitectura limpia, el diseño perfecto y los tiempos de carga inferiores a un segundo son estándar en cada proyecto que entregamos.",
-        icon: Award,
-    },
-    {
-        title: "Ejecución rápida",
-        description:
-            "Trabajamos rápido sin atajos. Nuestras metodologías ágiles y nuestro stack tecnológico moderno nos permiten iterar rápidamente y entregar resultados antes de lo programado.",
-        icon: Zap,
-    },
-    {
-        title: "Transparencia radical",
-        description:
-            "Sin cajas negras. Tendrás información constante sobre nuestro proceso, progreso y la lógica detrás de cada decisión técnica que tomamos.",
-        icon: Users,
-    },
-];
-
-const team = [
-    {
-        name: "Alex Rivera",
-        role: "Founder, Technical Director",
-        image: teamMember1,
-        loading: "lazy",
-    },
-    {
-        name: "Sarah Jenkins",
-        role: "Lead UI/UX Designer",
-        image: teamMember2,
-        loading: "lazy",
-    },
-    {
-        name: "David Chen",
-        role: "Senior Full-Stack Engineer",
-        image: teamMember3,
-        loading: "lazy",
-    },
-    {
-        name: "Maya Patel",
-        role: "Performance & SEO Lead",
-        image: teamMember4,
-        loading: "lazy",
-    },
-];
+import aboutImg from "../assets/images/profile-2.png";
+import { values, team } from "../data/about";
 ---
 
-<Layout title="Sobre Nosotros - DVLOP Premium Web Agency">
-    <Header />
+<Layout title="Sobre Mí - LUCAS <DEV/>">
+  <Header />
 
-    <main class="pt-32 pb-24">
-        <!-- Hero Section -->
-        <section
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 lg:mb-32 reveal"
+  <main class="pt-32 pb-24">
+    <section
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 lg:mb-32 reveal"
+    >
+      <Badge text="Sobre Mí" />
+      <h1
+        class="text-5xl md:text-7xl font-extrabold mb-8 reveal font-display"
+        transition:name="about-title"
+      >
+        5+ años ayudando negocios a crecer en <GradientText
+          >internet</GradientText
         >
+      </h1>
+      <p class="text-xl text-muted max-w-3xl mx-auto leading-relaxed font-mono">
+        Soy Lucas, desarrollador web especializado en frontend. Trabajo con
+        emprendedores, PyMEs y negocios locales que entienden algo importante:
+        las redes sociales no son suficiente para crecer de verdad.
+      </p>
+
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 reveal">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="relative">
             <div
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-accent text-sm font-semibold tracking-wide uppercase mb-6"
+              class="absolute inset-0 bg-primary rounded-3xl blur-3xl opacity-20 -z-10"
             >
-                Sobre Nosotros
             </div>
-            <h1
-                class="text-5xl md:text-7xl font-extrabold mb-8 reveal"
-                transition:name="about-title"
+            <Image
+              src={aboutImg}
+              alt="Our office collaboration"
+              loading="eager"
+              class="rounded-3xl border border-primary/10 shadow-2xl w-full object-cover aspect-auto"
+            />
+          </div>
+
+          <div class="lg:pl-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 reveal font-heading">
+              Un poco sobre mí
+            </h2>
+            <div class="space-y-6 text-lg text-muted leading-relaxed font-mono">
+              <p>
+                Comencé hace más de 5 años en el desarrollo web. Desde el
+                principio, vi un problema que se repetía: muchos negocios
+                pequeños dependían solo de sus redes sociales. Instagram,
+                Facebook, TikTok. Están bien, pero son herramientas que dependen
+                de algoritmos que no controlas.
+              </p>
+              <p>
+                Un día me preguntaron: "¿Pero por qué no hago un sitio web?" Y
+                respondí: "Exacto. Un sitio responsivo, que cargue rápido, que
+                aparezca en Google cuando alguien busca lo que hacés. ESA es la
+                herramienta poderosa." Fue un clic. Desde ahí, mi misión cambió.
+              </p>
+              <p>
+                Ahora trabajo con HTML, CSS, JavaScript, Astro para sitios
+                estáticos modernos, y MERN cuando necesitas algo más complejo.
+                Pero lo importante no es la tecnología: es que cada sitio que
+                hago está pensado para resolver un problema específico de tu
+                negocio. Responsivo en cualquier dispositivo. Rápido.
+                Posicionado en Google.
+              </p>
+              <p>
+                Cada proyecto lo trabajo de forma personalizada, sin templates
+                genéricos, con comunicación directa por WhatsApp. Si necesitas
+                presencia real en internet que funcione de verdad, puedo
+                ayudarte.
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-primary/10"
             >
-                Creando el <span
-                    class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-cyan-400"
-                    >Estándar</span
-                ><br class="hidden md:block" /> para la Web Moderna
-            </h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                Somos una agencia boutique de productos digitales nacida del
-                deseo de eliminar los sitios web lentos y poco inspiradores de
-                la web. Combinamos pensamiento estratégico con ingeniería de
-                élite para escalar negocios.
-            </p>
-        </section>
-
-        <!-- Our Story -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 reveal">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div
-                        class="absolute inset-0 bg-indigo-600 rounded-3xl blur-3xl opacity-20 -z-10"
-                    >
-                    </div>
-                    <Image
-                        src={aboutImg}
-                        alt="Our office collaboration"
-                        loading="eager"
-                        class="rounded-3xl border border-slate-800 shadow-2xl w-full object-cover aspect-square lg:aspect-4/5"
-                    />
+              <div>
+                <div
+                  class="text-4xl font-extrabold text-primary mb-2 font-display"
+                >
+                  50+
                 </div>
-
-                <div class="lg:pl-10">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-8 reveal">
-                        Nuestra Historia
-                    </h2>
-                    <div
-                        class="space-y-6 text-lg text-slate-400 leading-relaxed"
-                    >
-                        <p>
-                            DVLOP fue fundada en 2018 cuando un grupo de
-                            ingenieros senior y diseñadores de interfaces
-                            decidieron que estaban hartos de las agencias de
-                            software "estándar de la industria" que producían
-                            plantillas monolíticas de carga lenta.
-                        </p>
-                        <p>
-                            Reconocimos desde el principio que el futuro de la
-                            web pertenecía a las arquitecturas headless y los
-                            frontends. Al adoptar tecnologías de vanguardia
-                            tempranamente, comenzamos a ofrecer experiencias
-                            digitales que superaban drásticamente a las de
-                            nuestros clientes.
-                        </p>
-                        <p>
-                            Hoy en día, somos un colectivo unido que opera a
-                            nivel mundial. Mantenemos intencionadamente una
-                            agencia boutique, aceptando un número limitado de
-                            proyectos simultáneamente para poder integrarnos
-                            profundamente con los equipos de nuestros clientes y
-                            obsesionarnos con la calidad de nuestro código y
-                            diseño.
-                        </p>
-                    </div>
-
-                    <div
-                        class="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-slate-800"
-                    >
-                        <div>
-                            <div
-                                class="text-4xl font-extrabold text-white mb-2"
-                            >
-                                200+
-                            </div>
-                            <div class="text-white font-medium">
-                                Proyectos Entregados
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                class="text-4xl font-extrabold text-white mb-2"
-                            >
-                                99%
-                            </div>
-                            <div class="text-white font-medium">
-                                Retención de Clientes
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-ivory font-medium">Proyectos Entregados</div>
+              </div>
+              <div>
+                <div
+                  class="text-4xl font-extrabold text-primary mb-2 font-display"
+                >
+                  5+
                 </div>
+                <div class="text-ivory font-medium">Años de Experiencia</div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Core Values -->
-        <section
-            class="mb-32 bg-slate-900 border-y border-slate-800 py-24 reveal"
-        >
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">
-                        Nuestros Valores Fundamentales
-                    </h2>
-                    <p class="text-slate-400 text-lg">
-                        Los principios que guían nuestras decisiones técnicas,
-                        nuestros diseños y cómo tratamos a nuestros socios.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    {
-                        values.map((value) => {
-                            const Icon = value.icon;
-                            return (
-                                <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800/50 flex gap-6 group hover:border-indigo-500/50 transition-colors">
-                                    <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 transition-colors">
-                                        <Icon class="w-7 h-7 text-indigo-400" />
-                                    </div>
-                                    <div>
-                                        <h3 class="text-xl font-bold mb-3">
-                                            {value.title}
-                                        </h3>
-                                        <p class="text-slate-400 leading-relaxed">
-                                            {value.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
-                </div>
-            </div>
-        </section>
-
-        <!-- The Team -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 reveal">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">
-                    Conoce al Equipo
-                </h2>
-                <p class="text-slate-400 text-lg">
-                    El talento senior responsable de la arquitectura y el diseño
-                    de su presencia digital.
-                </p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {
-                    team.map((member) => (
-                        <div class="group">
-                            <div class="relative overflow-hidden mb-6 rounded-2xl aspect-3/4">
-                                <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10" />
-                                <Image
-                                    src={member.image}
-                                    alt={member.name}
-                                    inferSize={true}
-                                    loading={member.loading as "eager" | "lazy"}
-                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out grayscale group-hover:grayscale-0"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold mb-1">
-                                {member.name}
-                            </h3>
-                            <p class="text-indigo-400 font-medium">
-                                {member.role}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-        </section>
-
-        <CTA />
-    </main>
+      <Values values={values} />
+      <CTA />
+    </section>
 
     <Footer />
+  </main>
 </Layout>

@@ -1,0 +1,26 @@
+---
+export interface Props {
+  text?: string;
+  variant?: "primary" | "accent" | "default" | "secondary";
+  class?: string;
+}
+
+const { text, variant = "primary", class: className = "" } = Astro.props;
+
+const variants = {
+  primary: "bg-primary/10 border-primary/20 text-primary",
+  accent: "bg-accent/10 border-accent/20 text-accent",
+  default: "bg-primary/10 border-primary/20 text-primary",
+  secondary: "bg-surface border-muted/30 text-accent",
+};
+---
+
+<div
+  class:list={[
+    "inline-flex items-center gap-2 px-3 py-1 rounded-full border text-sm font-semibold tracking-wide uppercase mb-6 shadow-[0_0_20px_rgba(234,88,12,0.3)]",
+    variants[variant],
+    className,
+  ]}
+>
+  {text}
+</div>

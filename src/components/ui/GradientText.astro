@@ -1,0 +1,26 @@
+---
+export interface Props {
+  tag?: "span" | "h1" | "h2" | "h3" | "h4" | "div"
+  from?: string
+  to?: string
+  class?: string
+}
+
+const {
+  tag: Tag = "span",
+  from = "from-primary",
+  to = "to-accent",
+  class: className = "",
+} = Astro.props;
+---
+
+<Tag
+  class:list={[
+    "text-transparent bg-clip-text bg-linear-to-r",
+    from,
+    to,
+    className,
+  ]}
+>
+  <slot />
+</Tag>
