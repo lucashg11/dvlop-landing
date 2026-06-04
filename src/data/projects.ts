@@ -24,7 +24,7 @@ export const projects: Project[] = [
     image: ecommerceReplatformingImg,
     timeline: "1 año",
     problem:
-      "El cliente estaba en busqueda de una herramienta mas por fuera de sus redes sociales. Necesitaba una página que le permita mostrar su catálogo de productos y servicios, y que a su vez le permita recibir consultas por sus proximas salidas/reuniones.",
+      "El cliente estaba en búsqueda de una herramienta más allá de sus redes sociales. Necesitaba una página que le permita mostrar su catálogo de productos y servicios, y que a su vez le permita recibir consultas por sus próximas salidas y reuniones.",
     solution: [
       "Una landing moderna que se ve perfecto en celular",
       "Formulario para que los visitantes dejen sus consultas",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     image: fintechDashboardImg,
     timeline: "2 Meses",
     problem:
-      "Necesitaban una landing page para dar a conocerse como estudio juridico especializado en derecho laboral, solo tenian presencia en redes pero querian tener un lugar donde puedan mostrar lo que hacen 24/7",
+      "Necesitaban una landing page para darse a conocer como estudio jurídico especializado en derecho laboral. Solo tenían presencia en redes, pero querían un lugar donde mostrar lo que hacen las 24 horas, los 7 días de la semana.",
     solution: [
       "Landing page profesional donde los clientes conocen el estudio",
       "Formulario de contacto directo para nuevas consultas",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
   {
     id: "Landing-page-serflet-logistica",
     title: "Serflet Logística Landing Page",
-    category: "Logistica",
+    category: "Logística",
     image: corporateIdentityImg,
     timeline: "2 Meses",
     problem:

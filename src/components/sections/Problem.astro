@@ -1,0 +1,141 @@
+---
+import Badge from "../ui/Badge.astro";
+import GradientText from "../ui/GradientText.astro";
+---
+
+<section
+  id="problem"
+  class="py-24 bg-void border-t border-primary/10 reveal"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left: The problem -->
+      <div>
+        <Badge text="El problema" variant="secondary" />
+        <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-6 font-heading leading-tight">
+          Tu negocio existe, pero en <GradientText>Google</GradientText> casi no
+        </h2>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-start gap-4">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+            >
+              <svg
+                class="w-3 h-3 text-error"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                /></svg>
+            </span>
+            <span class="text-ivory/80 font-mono text-base leading-relaxed">
+              Dependés solo de <strong class="text-ivory">redes sociales</strong> que no controlás
+            </span>
+          </li>
+          <li class="flex items-start gap-4">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+            >
+              <svg
+                class="w-3 h-3 text-error"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                /></svg>
+            </span>
+            <span class="text-ivory/80 font-mono text-base leading-relaxed">
+              Cuando alguien te busca en Google, <strong class="text-ivory">no aparecés</strong>
+            </span>
+          </li>
+          <li class="flex items-start gap-4">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+            >
+              <svg
+                class="w-3 h-3 text-error"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                /></svg>
+            </span>
+            <span class="text-ivory/80 font-mono text-base leading-relaxed">
+              Perdés <strong class="text-ivory">consultas y ventas</strong> que se van a tu competencia
+            </span>
+          </li>
+          <li class="flex items-start gap-4">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+            >
+              <svg
+                class="w-3 h-3 text-error"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                /></svg>
+            </span>
+            <span class="text-ivory/80 font-mono text-base leading-relaxed">
+              Sin un sitio web, tu negocio <strong class="text-ivory">parece más chico de lo que es</strong>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: The bridge -->
+      <div
+        class="bg-surface rounded-3xl border border-primary/10 p-8 lg:p-10"
+      >
+        <div
+          class="w-14 h-14 rounded-2xl bg-success/10 border border-success/20 flex items-center justify-center mb-6"
+        >
+          <svg
+            class="w-7 h-7 text-success"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+            /></svg>
+        </div>
+        <h3 class="text-2xl font-bold font-heading text-ivory mb-4">
+          Un sitio web cambia eso
+        </h3>
+        <p class="text-muted font-mono leading-relaxed mb-6">
+          Rápido, que se vea bien en celular, que aparezca en Google cuando te
+          busquen y que convierta visitas en clientes. Sin vueltas, sin
+          tecnología que no necesitás.
+        </p>
+        <p class="text-ivory/60 font-mono text-sm">
+          Eso es lo que hago. Y lo que sigue acá abajo es cómo.
+        </p>
+        <div class="mt-6 flex gap-2">
+          <span class="w-2 h-2 rounded-full bg-primary/40"></span>
+          <span class="w-2 h-2 rounded-full bg-primary/30"></span>
+          <span class="w-2 h-2 rounded-full bg-primary/20"></span>
+          <span class="w-2 h-2 rounded-full bg-primary/10"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

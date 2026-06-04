@@ -90,7 +90,7 @@ pre,
 }
 
 /* CTA Violet */
-.bg-cta-violet {
+.bg-cta-primary {
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
 }
 
@@ -129,6 +129,14 @@ pre,
 
 .font-mono {
     font-family: var(--font-mono);
+}
+
+.shadow-cta-primary {
+    box-shadow: 0 0 20px rgb(from var(--color-primary) r g b / 0.3);
+}
+
+.shadow-cta-primary-hover {
+    box-shadow: 0 0 30px rgb(from var(--color-primary) r g b / 0.5);
 }
 
 @keyframes orb-float {

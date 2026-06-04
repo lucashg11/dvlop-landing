@@ -64,8 +64,8 @@ export const services: Service[] = [
     features: [
       "El cliente escanea y accede sin descargar nada",
       "Categorías, fotos, precios y descripciones",
-      "Actualiza el menú cuando quieras",
-      "QR listo para imprimir e usar",
+      "Actualizás el menú cuando quieras",
+      "QR listo para imprimir y usar",
     ],
     image: ecommerceImg,
     loading: "lazy",

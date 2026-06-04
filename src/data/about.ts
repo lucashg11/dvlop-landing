@@ -5,7 +5,7 @@ export const values: Value[] = [
   {
     title: "Te escucho de verdad",
     description:
-      "No te vendo features que no necesitas. Antes de escribir una línea de código, entiendo qué querés lograr con tu sitio y por qué.",
+      "No te vendo funcionalidades que no necesitás. Antes de escribir una línea de código, entiendo qué querés lograr con tu sitio y por qué.",
     icon: "target",
   },
   {
@@ -23,7 +23,7 @@ export const values: Value[] = [
   {
     title: "Explico todo",
     description:
-      "Sabes qué hago y por qué. Sin jerga innecesaria. Si no entiendes algo, te lo explico de nuevo hasta que quede claro.",
+      "Sabés qué hago y por qué. Sin jerga innecesaria. Si no entendés algo, te lo explico de nuevo hasta que quede claro.",
     icon: "users",
   },
 ];

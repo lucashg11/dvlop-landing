@@ -3,16 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
-import Team from "../components/sections/Team.astro";
 import Values from "../components/sections/Values.astro";
 import Badge from "../components/ui/Badge.astro";
 import GradientText from "../components/ui/GradientText.astro";
 import { Image } from "astro:assets";
 import aboutImg from "../assets/images/profile-2.png";
-import { values, team } from "../data/about";
+import { values } from "../data/about";
 ---
 
-<Layout title="Sobre Mí - LUCAS <DEV/>">
+<Layout title="Sobre Mí - LUCAS &lt;DEV/&gt;" description="Soy Lucas, desarrollador web con más de 5 años de experiencia. Trabajo con emprendedores, PyMEs y negocios locales que quieren dejar de depender solo de redes sociales y tener presencia real en Google.">
   <Header />
 
   <main class="pt-32 pb-24">
@@ -34,8 +33,8 @@ import { values, team } from "../data/about";
         las redes sociales no son suficiente para crecer de verdad.
       </p>
 
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 reveal">
-        <div class="grid lg:grid-cols-2 gap-16">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-32 reveal">
+        <div class="grid lg:grid-cols-2 gap-16 justify-center items-center">
           <div class="relative">
             <div
               class="absolute inset-0 bg-primary rounded-3xl blur-3xl opacity-20 -z-10"
@@ -43,9 +42,9 @@ import { values, team } from "../data/about";
             </div>
             <Image
               src={aboutImg}
-              alt="Our office collaboration"
+              alt="Lucas — desarrollador web con más de 5 años de experiencia"
               loading="eager"
-              class="rounded-3xl border border-primary/10 shadow-2xl w-full object-cover aspect-auto"
+              class="rounded-3xl border border-primary/10 shadow-2xl w-full object-cover aspect-auto justify-center items-center"
             />
           </div>
 
@@ -59,7 +58,7 @@ import { values, team } from "../data/about";
                 principio, vi un problema que se repetía: muchos negocios
                 pequeños dependían solo de sus redes sociales. Instagram,
                 Facebook, TikTok. Están bien, pero son herramientas que dependen
-                de algoritmos que no controlas.
+                de algoritmos que no controlás.
               </p>
               <p>
                 Un día me preguntaron: "¿Pero por qué no hago un sitio web?" Y
@@ -68,16 +67,16 @@ import { values, team } from "../data/about";
                 herramienta poderosa." Fue un clic. Desde ahí, mi misión cambió.
               </p>
               <p>
-                Ahora trabajo con HTML, CSS, JavaScript, Astro para sitios
-                estáticos modernos, y MERN cuando necesitas algo más complejo.
+                Hoy trabajo con HTML, CSS, JavaScript, Astro para sitios
+                estáticos modernos, y MERN cuando necesitás algo más complejo.
                 Pero lo importante no es la tecnología: es que cada sitio que
                 hago está pensado para resolver un problema específico de tu
                 negocio. Responsivo en cualquier dispositivo. Rápido.
                 Posicionado en Google.
               </p>
               <p>
-                Cada proyecto lo trabajo de forma personalizada, sin templates
-                genéricos, con comunicación directa por WhatsApp. Si necesitas
+                Cada proyecto lo trabajo de forma personalizada, sin plantillas
+                genéricas, con comunicación directa por WhatsApp. Si necesitás
                 presencia real en internet que funcione de verdad, puedo
                 ayudarte.
               </p>
@@ -108,8 +107,8 @@ import { values, team } from "../data/about";
       </section>
 
       <Values values={values} />
-      <CTA />
     </section>
+    <CTA />
 
     <Footer />
   </main>
