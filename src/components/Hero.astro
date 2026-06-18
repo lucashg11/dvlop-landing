@@ -1,12 +1,15 @@
 ---
 import GradientText from "./ui/GradientText.astro";
+import { siteConfig } from "../data/site";
+
+const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, vengo de tu web y quiero reservar 15 minutos para hablar de mi proyecto.")}`;
 ---
 
 <section
+  id="hero"
   class="relative min-h-screen flex items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden reveal"
 >
   <div class="absolute inset-0 -z-10 overflow-hidden bg-void">
-    {/*<div class="absolute inset-0 bg-hero-glow"></div>*/}
     <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
     <div class="absolute inset-0 bg-dot-pattern opacity-40"></div>
     <div
@@ -18,10 +21,6 @@ import GradientText from "./ui/GradientText.astro";
       style="animation-delay: -5s;"
     >
     </div>
-    {
-      /*<div* class="absolute inset-0 bg-conic-halo blur-3xl opacity-10"></div*>*/
-    }
-
     <div
       class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('../assets/images/noise.svg')]"
     >
@@ -40,30 +39,31 @@ import GradientText from "./ui/GradientText.astro";
           <span class="relative inline-flex rounded-full h-2 w-2 bg-success"
           ></span>
         </span>
-        Disponible para nuevos proyectos
+        Disponible para 2 proyectos este mes
       </div>
 
       <h1
         class="text-3xl md:text-6xl font-extrabold tracking-tight mb-8 animate-fade-in-up animate-delay-100 font-display"
       >
-    <!-- TODO: Cambiar texto por algo más atractivo y relevante para el usuario. Que refleje el valor que le aporta a su negocio. Estamos hablando que el prodcto a entregar es un sitio web que tenga presencia en internet, aplicando buen SEO, optimizando recursos para que la carga sea la menor posible y el sitio se sienta que es instantaneo. -->
-    Querés <GradientText>presencia online </GradientText>pero no sabés por dónde <GradientText>empezar</GradientText>?
+        Tu próximo cliente te está buscando en <GradientText>Google</GradientText>. <br> <GradientText>No te encuentra.</GradientText>
       </h1>
 
       <p
         class="text-lg font-mono md:text-xl text-muted max-w-xl mb-10 animate-fade-in-up animate-delay-200"
       >
-      Definamos juntos qué necesitás; yo me encargo del resto: sitio rápido, bien presentado y listo para que te contacten.
+        Creo sitios web rápidos, optimizados para Google y diseñados para convertir
+        visitas en consultas. Comunicación directa por
+        WhatsApp, sin jerga.
       </p>
 
       <div
         class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-300"
       >
         <a
-          href="/#contact"
+          href="#process"
           class="flex items-center justify-center gap-2 bg-cta-primary text-ivory px-8 py-3.5 rounded-full font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover"
         >
-          Empezemos tu Proyecto
+          Ver cómo trabajo
           <svg
             class="w-5 h-5"
             fill="none"
@@ -77,11 +77,60 @@ import GradientText from "./ui/GradientText.astro";
           >
         </a>
         <a
-          href="/#work"
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener"
           class="flex items-center justify-center gap-2 bg-surface hover:bg-primary text-ivory px-8 py-3.5 rounded-full font-medium transition-all border border-primary/20"
         >
-          Ver mis trabajos
+          Reservar 15 min por WhatsApp
         </a>
+      </div>
+
+      <div
+        class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-muted text-sm font-mono animate-fade-in-up animate-delay-400"
+      >
+        <span class="flex items-center gap-2">
+          <svg
+            class="w-4 h-4 text-success"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"></path></svg
+          >
+          +5 años de experiencia
+        </span>
+        <span class="flex items-center gap-2">
+          <svg
+            class="w-4 h-4 text-success"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"></path></svg
+          >
+          Respuesta en menos de 24h
+        </span>
+        <span class="flex items-center gap-2">
+          <svg
+            class="w-4 h-4 text-success"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"></path></svg
+          >
+          Garantía 30 días
+        </span>
       </div>
     </div>
   </div>

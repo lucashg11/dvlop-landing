@@ -1,0 +1,26 @@
+{
+  "name": "Lucas Dev · Desarrollo web en Zárate",
+  "short_name": "Lucas Dev",
+  "description": "Desarrollador web en Zárate, Buenos Aires. Sitios rápidos, optimizados para Google y diseñados para convertir visitas en consultas.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0a09",
+  "theme_color": "#ea580c",
+  "orientation": "portrait",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}

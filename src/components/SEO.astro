@@ -1,57 +1,102 @@
 ---
+import { siteConfig } from "../data/site";
+import { faqs } from "../data/faqs";
+
 interface Props {
   title: string;
   description: string;
   image?: string;
   article?: boolean;
+  hasFaq?: boolean;
 }
 
 const {
   title,
   description,
-  image = "/og-image.webp", // Default fallback OG image
+  image = "/og-image.webp",
   article = false,
+  hasFaq = false,
 } = Astro.props;
 
-// Evaluate dynamic Canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.answer,
+    },
+  })),
+};
 ---
 
-<!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content={article ? "article" : "website"} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.site)} />
+<meta property="og:site_name" content={siteConfig.alternateName} />
+<meta property="og:locale" content="es_AR" />
 
-<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.site)} />
 
-<!-- Sitemap integration standard -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
-<!-- JSON-LD Structured Data -->
 <script
   type="application/ld+json"
   is:inline
   set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "LUCAS <DEV/>",
+    name: siteConfig.name,
+    alternateName: siteConfig.alternateName,
     url: Astro.site,
     logo: new URL("/favicon.svg", Astro.site),
-    description: description,
-    sameAs: [
-      "https://twitter.com/lucasdev",
-      "https://linkedin.com/in/lucasdev",
-    ],
+    description: siteConfig.description,
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.address[0],
+      addressRegion: siteConfig.address[1],
+      addressCountry: "AR",
+    },
+    sameAs: siteConfig.socials.map((s) => s.href),
+  })}
+/>
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": new URL("#business", Astro.site),
+    name: siteConfig.alternateName,
+    image: new URL(image, Astro.site),
+    url: Astro.site,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.address[0],
+      addressRegion: siteConfig.address[1],
+      addressCountry: "AR",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Argentina",
+    },
   })}
 />
 
@@ -61,8 +106,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: title,
+    name: siteConfig.alternateName,
     url: Astro.site,
-    description: description,
+    description: siteConfig.description,
+    inLanguage: "es-AR",
   })}
 />
+
+{
+  hasFaq && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqJsonLd)}
+    />
+  )
+}

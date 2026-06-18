@@ -1,0 +1,67 @@
+---
+import Badge from "../ui/Badge.astro";
+import GradientText from "../ui/GradientText.astro";
+import { testimonials } from "../../data/testimonials";
+---
+
+<section
+  id="testimonials"
+  class="py-24 bg-void border-t border-primary/10 reveal"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <Badge text="Voces de clientes" variant="secondary" />
+      <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4 font-heading">
+        Lo que dicen <GradientText>quienes ya trabajaron conmigo</GradientText>
+      </h2>
+      <p class="text-muted text-lg font-mono">
+        Citas textuales de proyectos entregados. Los nombres se muestran con permiso
+        del cliente.
+      </p>
+    </div>
+
+    <div
+      class="mb-10 p-4 rounded-2xl border border-accent/30 bg-accent/5 text-center max-w-2xl mx-auto"
+    >
+      <p class="text-accent text-sm font-mono">
+        <strong>Placeholder honesto:</strong> estos testimonios están pendientes
+        de carga con citas reales. La estructura ya está lista para reemplazar
+        con permiso del cliente.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {
+        testimonials.map((t) => (
+          <figure
+            class="bg-surface border border-primary/10 rounded-3xl p-8 flex flex-col gap-6 hover:border-primary/30 transition-colors"
+          >
+            <svg
+              class="w-10 h-10 text-primary/40"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.34v-6.83H5.17A3 3 0 0 1 8 8.17V6H7.17zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.34v-6.83h-3.17A3 3 0 0 1 18 8.17V6h-.83z" />
+            </svg>
+
+            <blockquote class="text-ivory/85 font-mono text-base leading-relaxed flex-1">
+              "{t.quote}"
+            </blockquote>
+
+            <div class="pt-4 border-t border-primary/10">
+              <p class="text-primary text-xs uppercase tracking-widest font-mono mb-2">
+                Resultado
+              </p>
+              <p class="text-ivory/70 text-sm font-mono mb-4">{t.metric}</p>
+              <figcaption>
+                <p class="text-ivory font-semibold">{t.name}</p>
+                <p class="text-muted text-sm font-mono">{t.role}</p>
+              </figcaption>
+            </div>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

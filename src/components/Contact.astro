@@ -3,26 +3,27 @@ import { Icon } from "astro-icon/components";
 import Badge from "./ui/Badge.astro";
 import GradientText from "./ui/GradientText.astro";
 import ContactForm from "./ui/ContactForm.astro";
+import { siteConfig } from "../data/site";
 
 const contactData = [
   {
     id: "email",
-    title: "Envianos un correo",
-    description: "hello@lucasdev.com",
-    link: "mailto:hello@lucasdev.com",
+    title: "Escribime un correo",
+    description: siteConfig.email,
+    link: `mailto:${siteConfig.email}`,
     icon: "ri:mail-fill",
   },
   {
-    id: "phone",
+    id: "whatsapp",
     title: "WhatsApp",
-    description: "+54 (3487) 314-587",
-    link: "https://wa.me/5491162485810",
+    description: siteConfig.phone,
+    link: siteConfig.whatsappUrl,
     icon: "ri:phone-fill",
   },
   {
     id: "location",
     title: "Ubicación",
-    description: "Zarate, Buenos Aires, CP 2800",
+    description: `${siteConfig.address[0]}, ${siteConfig.address[1]}`,
     icon: "ri:map-pin-fill",
   },
 ];
@@ -38,16 +39,24 @@ const contactData = [
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class="text-center max-w-3xl mx-auto mb-12 p-4 rounded-2xl border border-primary/20 bg-primary/5"
+    >
+      <p class="text-ivory font-mono text-sm">
+        <span class="text-primary">★</span> Respuesta en menos de 24h ·
+        +5 años de experiencia · Garantía 30 días en cada proyecto
+      </p>
+    </div>
+
     <div class="grid lg:grid-cols-2 gap-16">
       <div>
-        <Badge text="Contactame" variant="secondary" />
+        <Badge text="Hablemos" variant="secondary" />
         <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal font-heading">
-          ¿Necesitás llevar tu negocio a <GradientText>Google?</GradientText>
+          Te respondo en <GradientText>menos de 24 horas.</GradientText>
         </h2>
         <p class="text-lg text-muted mb-10 leading-relaxed max-w-lg font-mono">
-          Ya sea que tengas una visión clara o solo una idea aproximada, estoy
-          para ayudarte a darle vida. Completá el formulario y te
-          respondo a la brevedad.
+          Elegí el canal que prefieras. Sin formularios eternos, sin
+          intermediarios. Directo conmigo.
         </p>
 
         <div class="space-y-8">
@@ -89,7 +98,7 @@ const contactData = [
         <ContactForm
           showHeader={false}
           showPrivacy={true}
-          btnTexto="Enviar Mensaje"
+          btnTexto="Enviar mensaje"
           className="relative z-10"
         />
       </div>

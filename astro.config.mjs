@@ -6,9 +6,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lucasdev.com',
+  site: 'https://lhgdev.netlify.app',
   image: {
-    domains: ["images.unsplash.com"]
+    domains: []
   },
   vite: {
     plugins: [tailwindcss()],

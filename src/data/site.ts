@@ -1,10 +1,13 @@
 export const siteConfig = {
-  name: "LUCAS <DEV/>",
+  name: "Lucas Dev",
+  alternateName: "LUCAS <DEV/>",
   description:
-    "Desarrollador web especializado en crear sitios responsivos, rápidos y optimizados para Google. Ayudo emprendedores y PyMEs a tener presencia real en internet.",
-  email: "hello@lucasdev.com",
+    "Desarrollador web en Zárate, Buenos Aires. Creo sitios rápidos, optimizados para Google y diseñados para convertir visitas en consultas. Para emprendedores y PyMEs que quieren presencia digital real.",
+  email: "gomezlucashernan@hotmail.com",
   phone: "+54 (3487) 314-587",
-  address: ["Zárate", "Buenos Aires, CP 2800"],
+  phoneRaw: "5493487314587",
+  whatsappUrl: "https://wa.me/5493487314587",
+  address: ["Zárate", "Buenos Aires, Argentina"],
   socials: [
     { name: "Twitter", icon: "ri:twitter-x-fill", href: "https://twitter.com/lucasdev" },
     { name: "Instagram", icon: "ri:instagram-fill", href: "https://instagram.com/lucasdev" },
@@ -15,14 +18,14 @@ export const siteConfig = {
 
 export const navLinks = [
   { name: "Servicios", href: "/services" },
-  { name: "Trabajos Realizados", href: "/work" },
-  { name: "Quién Soy", href: "/about" },
+  { name: "Trabajos", href: "/work" },
+  { name: "Sobre mí", href: "/about" },
 ] as const;
 
 export const footerLinks = [
   { name: "Inicio", href: "/" },
   { name: "Servicios", href: "/services" },
-  { name: "Mis Trabajos", href: "/work" },
-  { name: "Sobre Mí", href: "/about" },
+  { name: "Trabajos", href: "/work" },
+  { name: "Sobre mí", href: "/about" },
   { name: "Contacto", href: "/contact" },
 ] as const;

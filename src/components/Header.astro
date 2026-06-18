@@ -1,5 +1,8 @@
 ---
 import { navLinks } from "../data/site";
+import { siteConfig } from "../data/site";
+
+const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, vengo de tu web y quiero reservar 15 minutos para hablar de mi proyecto.")}`;
 ---
 
 <header
@@ -8,23 +11,10 @@ import { navLinks } from "../data/site";
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="shrink-0 flex items-center gap-2">
-        {
-          /*<svg
-          class="w-8 h-8 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
-        > */
-        }
         <p class="font-mono font-extrabold text-2xl tracking-tight text-ivory">
           LUCAS<span
             class="bg-linear-to-r from-primary to-accent text-transparent bg-clip-text"
-            >＜DEV∕＞</span
+            >&lt;&#47;DEV&gt;</span
           >
         </p>
       </a>
@@ -42,10 +32,12 @@ import { navLinks } from "../data/site";
       </nav>
       <div class="hidden md:block">
         <a
-          href="/contact"
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener"
           class="bg-cta-primary hover:brightness-110 text-ivory px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover"
         >
-          Consultá un Proyecto
+          Hablemos
         </a>
       </div>
       <div class="md:hidden flex items-center">
@@ -99,10 +91,12 @@ import { navLinks } from "../data/site";
         ))
       }
       <a
-        href="/contact"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener"
         class="block px-4 py-3 mt-4 text-center rounded-xl bg-cta-primary shadow-cta-primary hover:shadow-cta-primary-hover hover:brightness-110 text-ivory text-base font-medium transition-all duration-300 mobile-link border border-primary/50"
       >
-        Empezemos tu Proyecto
+        Hablemos por WhatsApp
       </a>
     </div>
   </div>

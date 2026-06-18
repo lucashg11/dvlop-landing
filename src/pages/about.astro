@@ -4,110 +4,142 @@ import Header from "../components/Header.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 import Values from "../components/sections/Values.astro";
-import Badge from "../components/ui/Badge.astro";
-import GradientText from "../components/ui/GradientText.astro";
+import FAQ from "../components/sections/FAQ.astro";
 import { Image } from "astro:assets";
 import aboutImg from "../assets/images/profile-2.png";
 import { values } from "../data/about";
+import { siteConfig } from "../data/site";
+
+const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, vengo de tu web y quiero reservar 15 minutos para hablar de mi proyecto.")}`;
 ---
 
-<Layout title="Sobre Mí - LUCAS &lt;DEV/&gt;" description="Soy Lucas, desarrollador web con más de 5 años de experiencia. Trabajo con emprendedores, PyMEs y negocios locales que quieren dejar de depender solo de redes sociales y tener presencia real en Google.">
+<Layout
+  title="Sobre mí — Lucas Dev · Desarrollo web en Zárate, Buenos Aires"
+  description="Soy Lucas, desarrollador web con +5 años de experiencia. Ayudo a emprendedores, PyMEs y negocios locales a aparecer en Google y dejar de depender solo de redes sociales."
+  hasFaq={true}
+>
   <Header />
 
-  <main class="pt-32 pb-24">
+  <main id="main" class="pt-32 pb-24">
     <section
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 lg:mb-32 reveal"
     >
-      <Badge text="Sobre Mí" />
+      <p
+        class="text-primary font-mono text-sm font-medium mb-4 uppercase tracking-widest"
+      >
+        Sobre mí
+      </p>
       <h1
         class="text-5xl md:text-7xl font-extrabold mb-8 reveal font-display"
         transition:name="about-title"
       >
-        5+ años ayudando negocios a crecer en <GradientText
-          >internet</GradientText
-        >
+        +5 años haciendo que negocios
+        <span class="text-primary"> aparezcan en Google</span>
       </h1>
-      <p class="text-xl text-muted max-w-3xl mx-auto leading-relaxed font-mono">
-        Soy Lucas, desarrollador web especializado en frontend. Trabajo con
+      <p
+        class="text-xl text-muted max-w-3xl mx-auto leading-relaxed font-mono"
+      >
+        Soy Lucas, desarrollador web en Zárate, Buenos Aires. Trabajo con
         emprendedores, PyMEs y negocios locales que entienden algo importante:
         las redes sociales no son suficiente para crecer de verdad.
       </p>
+    </section>
 
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-32 reveal">
-        <div class="grid lg:grid-cols-2 gap-16 justify-center items-center">
-          <div class="relative">
-            <div
-              class="absolute inset-0 bg-primary rounded-3xl blur-3xl opacity-20 -z-10"
-            >
-            </div>
-            <Image
-              src={aboutImg}
-              alt="Lucas — desarrollador web con más de 5 años de experiencia"
-              loading="eager"
-              class="rounded-3xl border border-primary/10 shadow-2xl w-full object-cover aspect-auto justify-center items-center"
-            />
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-32 reveal">
+      <div class="grid lg:grid-cols-2 gap-16 justify-center items-center">
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-primary rounded-3xl blur-3xl opacity-20 -z-10"
+          >
+          </div>
+          <Image
+            src={aboutImg}
+            alt="Lucas, desarrollador web freelance en Zárate, Buenos Aires"
+            loading="eager"
+            class="rounded-3xl border border-primary/10 shadow-2xl w-full object-cover aspect-auto justify-center items-center"
+          />
+        </div>
+
+        <div class="lg:pl-10">
+          <h2 class="text-3xl md:text-5xl font-bold mb-8 reveal font-heading">
+            Un poco sobre mí
+          </h2>
+          <div class="space-y-6 text-lg text-muted leading-relaxed font-mono">
+            <p>
+              Comencé hace más de 5 años en el desarrollo web. Desde el
+              principio vi un problema que se repetía: muchos negocios
+              dependían solo de sus redes sociales. Instagram, Facebook, TikTok.
+              Están bien, pero son plataformas que no controlás.
+            </p>
+            <p>
+              Un día alguien me preguntó por qué no hacer un sitio web, y
+              respondí: "Exacto. Un sitio responsivo, que cargue rápido, que
+              aparezca en Google cuando alguien busca lo que hacés. Esa es la
+              herramienta poderosa." Fue un clic. Desde ahí mi misión cambió.
+            </p>
+            <p>
+              Hoy trabajo con Astro, HTML, CSS, JavaScript, Tailwind CSS para
+              sitios rápidos, y con React + Node + MongoDB cuando necesitás
+              algo más complejo. Pero la tecnología es lo de menos: cada sitio
+              resuelve un problema concreto de tu negocio. Responsivo en
+              cualquier dispositivo, rápido, posicionado en Google.
+            </p>
+            <p>
+              Cada proyecto lo trabajo de forma personalizada, sin plantillas
+              genéricas, con comunicación directa por WhatsApp. Si necesitás
+              presencia real en internet que funcione de verdad, puedo
+              ayudarte.
+            </p>
           </div>
 
-          <div class="lg:pl-10">
-            <h2 class="text-3xl md:text-5xl font-bold mb-8 reveal font-heading">
-              Un poco sobre mí
-            </h2>
-            <div class="space-y-6 text-lg text-muted leading-relaxed font-mono">
-              <p>
-                Comencé hace más de 5 años en el desarrollo web. Desde el
-                principio, vi un problema que se repetía: muchos negocios
-                pequeños dependían solo de sus redes sociales. Instagram,
-                Facebook, TikTok. Están bien, pero son herramientas que dependen
-                de algoritmos que no controlás.
-              </p>
-              <p>
-                Un día me preguntaron: "¿Pero por qué no hago un sitio web?" Y
-                respondí: "Exacto. Un sitio responsivo, que cargue rápido, que
-                aparezca en Google cuando alguien busca lo que hacés. ESA es la
-                herramienta poderosa." Fue un clic. Desde ahí, mi misión cambió.
-              </p>
-              <p>
-                Hoy trabajo con HTML, CSS, JavaScript, Astro para sitios
-                estáticos modernos, y MERN cuando necesitás algo más complejo.
-                Pero lo importante no es la tecnología: es que cada sitio que
-                hago está pensado para resolver un problema específico de tu
-                negocio. Responsivo en cualquier dispositivo. Rápido.
-                Posicionado en Google.
-              </p>
-              <p>
-                Cada proyecto lo trabajo de forma personalizada, sin plantillas
-                genéricas, con comunicación directa por WhatsApp. Si necesitás
-                presencia real en internet que funcione de verdad, puedo
-                ayudarte.
-              </p>
+          <div
+            class="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-primary/10"
+          >
+            <div>
+              <div
+                class="text-4xl font-extrabold text-primary mb-2 font-display"
+              >
+                50+
+              </div>
+              <div class="text-ivory font-medium">Proyectos entregados</div>
             </div>
+            <div>
+              <div
+                class="text-4xl font-extrabold text-primary mb-2 font-display"
+              >
+                &lt;24h
+              </div>
+              <div class="text-ivory font-medium">Tiempo de respuesta</div>
+            </div>
+          </div>
 
-            <div
-              class="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-primary/10"
+          <div class="mt-10">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-cta-primary text-ivory px-8 py-3.5 rounded-full font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover"
             >
-              <div>
-                <div
-                  class="text-4xl font-extrabold text-primary mb-2 font-display"
-                >
-                  50+
-                </div>
-                <div class="text-ivory font-medium">Proyectos Entregados</div>
-              </div>
-              <div>
-                <div
-                  class="text-4xl font-extrabold text-primary mb-2 font-display"
-                >
-                  5+
-                </div>
-                <div class="text-ivory font-medium">Años de Experiencia</div>
-              </div>
-            </div>
+              Hablemos por WhatsApp
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
           </div>
         </div>
-      </section>
-
-      <Values values={values} />
+      </div>
     </section>
+
+    <Values values={values} />
+    <FAQ />
     <CTA />
 
     <Footer />

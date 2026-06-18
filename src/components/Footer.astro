@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear();
           >
             LUCAS<span
               class="bg-linear-to-r from-primary to-accent text-transparent bg-clip-text"
-              >＜DEV∕＞</span
+              >&lt;&#47;DEV&gt;</span
             >
           </p>
         </a>
@@ -28,6 +28,8 @@ const currentYear = new Date().getFullYear();
               <a
                 href={social.href}
                 aria-label={social.name}
+                target="_blank"
+                rel="noopener"
                 class="w-10 h-10 rounded-full bg-surface border border-primary/10 flex items-center justify-center text-muted hover:text-accent hover:border-accent/30 hover:bg-accent/10 transition-all group"
               >
                 <Icon
@@ -44,7 +46,7 @@ const currentYear = new Date().getFullYear();
         <h3
           class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
         >
-          Mapa del Sitio
+          Mapa del sitio
         </h3>
         <ul class="space-y-4">
           {
@@ -66,7 +68,7 @@ const currentYear = new Date().getFullYear();
         <h3
           class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
         >
-          Ubicación
+          Contacto
         </h3>
         <ul class="space-y-4 font-mono">
           <li class="text-ivory/60">
@@ -83,10 +85,12 @@ const currentYear = new Date().getFullYear();
           </li>
           <li>
             <a
-              href={`tel:${siteConfig.phone}`}
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener"
               class="text-ivory/60 hover:text-primary transition-colors"
             >
-              {siteConfig.phone}
+              WhatsApp: {siteConfig.phone}
             </a>
           </li>
         </ul>
@@ -96,16 +100,21 @@ const currentYear = new Date().getFullYear();
     <div
       class="pt-8 border-t border-primary/10 flex flex-col md:flex-row items-center justify-between gap-4"
     >
-      <p class="text-muted text-sm">
-        &copy; {currentYear} LUCAS＜DEV∕＞ &trade;. Todos los derechos reservados.
+      <p class="text-muted text-sm font-mono">
+        © {currentYear} {siteConfig.alternateName} · {siteConfig.address[0]}.
+        Todos los derechos reservados.
       </p>
       <div class="flex items-center gap-6 text-sm text-muted">
-        <a href="/privacy-policy" class="hover:text-ivory transition-colors"
-          >Política de Privacidad</a
+        <a
+          href={`https://wa.me/${siteConfig.phoneRaw}`}
+          target="_blank"
+          rel="noopener"
+          class="hover:text-ivory transition-colors"
         >
-        <a href="/terms-of-service" class="hover:text-ivory transition-colors"
-          >Términos de Servicio</a
-        >
+          Contacto
+        </a>
+        <span class="text-muted/50">·</span>
+        <span class="text-muted/70 font-mono">Factura C · Monotributo</span>
       </div>
     </div>
   </div>

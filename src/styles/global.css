@@ -58,6 +58,14 @@ pre,
     transition-delay: 150ms;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 /* Premium Background Utilities */
 .bg-void {
     background-color: var(--color-void);

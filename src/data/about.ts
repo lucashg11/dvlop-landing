@@ -5,26 +5,20 @@ export const values: Value[] = [
   {
     title: "Te escucho de verdad",
     description:
-      "No te vendo funcionalidades que no necesitás. Antes de escribir una línea de código, entiendo qué querés lograr con tu sitio y por qué.",
+      "Antes de escribir una línea de código, entiendo qué hace tu negocio, qué te duele y qué querés lograr. Si algo no te sirve, te lo digo, aunque sea perder la venta.",
     icon: "target",
   },
   {
-    title: "Sitios que duran",
+    title: "Sitios que aguantan",
     description:
-      "Responsivo en cualquier dispositivo, que cargue rápido. Si lo publico, tiene que aguantar. Sin atajos, sin sorpresas a los 3 meses.",
+      "Responsivo en cualquier dispositivo, que cargue rápido, que se vea profesional. Lo que entrego tiene que seguir funcionando a los 6 meses, no solo el día del lanzamiento.",
     icon: "zap",
   },
   {
-    title: "Rápido y bien",
+    title: "Sin vueltas",
     description:
-      "Entrego en días, no meses. Sin burocracia, sin esperas. Chats directos por WhatsApp, claridad total del progreso.",
+      "Entrega en días, no meses. Chats directos por WhatsApp, propuestas por escrito, claridad total del avance. Sin burocracia, sin intermediarios, sin jerga.",
     icon: "clock",
-  },
-  {
-    title: "Explico todo",
-    description:
-      "Sabés qué hago y por qué. Sin jerga innecesaria. Si no entendés algo, te lo explico de nuevo hasta que quede claro.",
-    icon: "users",
   },
 ];
 

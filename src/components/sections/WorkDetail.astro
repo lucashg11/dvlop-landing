@@ -2,34 +2,39 @@
 import { Image } from "astro:assets";
 import { ICONS } from "../../data/icons";
 import CTA from "../CTA.astro";
-import Badge from "../ui/Badge.astro";
-import GradientText from "../ui/GradientText.astro";
 import type { Project } from "../../data/projects";
+import { siteConfig } from "../../data/site";
 
 export interface Props {
   projects: Project[];
 }
 const { projects } = Astro.props;
+
+const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, vi tus proyectos y quiero contarte sobre el mío.")}`;
 ---
 
-<main class="pt-32 pb-24">
+<main id="main" class="pt-32 pb-24">
   <section
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 reveal"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 reveal"
   >
-    <Badge text="Proyectos" />
+    <p
+      class="text-primary font-mono text-sm font-medium mb-4 uppercase tracking-widest"
+    >
+      Trabajos realizados
+    </p>
     <h1
       class="text-5xl md:text-7xl font-extrabold mb-6 reveal font-display"
       transition:name="work-title"
     >
-      Sitios que <GradientText>construí</GradientText>
+      Problemas reales, <span class="text-primary">soluciones concretas</span>
     </h1>
     <p class="text-xl text-ivory/60 max-w-3xl mx-auto font-mono">
-      Explorar cómo resuelvo problemas reales. El desafío que cada cliente
-      tenía, cómo lo solucionamos, y qué cambió.
+      Cada proyecto incluye el desafío que el cliente tenía, cómo lo
+      solucioné y qué cambió después. Sin stock photos ni capturas genéricas.
     </p>
   </section>
 
-  <div class="space-y-32">
+  <div class="space-y-24">
     {
       projects.map((project) => {
         const CircleCheck = ICONS["circle-check"];
@@ -43,12 +48,12 @@ const { projects } = Astro.props;
             <div class="bg-surface border border-primary/10 rounded-3xl overflow-hidden p-8 lg:p-12">
               <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 <div class="order-2 lg:order-1">
-                  <div class="flex items-center gap-4 mb-6">
-                    <span class="text-accent font-medium uppercase tracking-wider text-sm">
+                  <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class="text-accent font-medium uppercase tracking-wider text-sm font-mono">
                       {project.category}
                     </span>
                     <span class="w-1.5 h-1.5 rounded-full bg-muted" />
-                    <div class="flex items-center gap-2 text-muted text-sm font-medium">
+                    <div class="flex items-center gap-2 text-muted text-sm font-mono">
                       {Clock && <Clock class="w-4 h-4" />}
                       {project.timeline}
                     </div>
@@ -74,9 +79,9 @@ const { projects } = Astro.props;
                           d="M8 8l8 8M16 8l-8 8"
                         />
                       </svg>
-                      El Problema
+                      El problema
                     </h3>
-                    <p class="text-ivory/70 leading-relaxed font-mono">
+                    <p class="text-ivory/80 leading-relaxed font-mono">
                       {project.problem}
                     </p>
                   </div>
@@ -86,23 +91,38 @@ const { projects } = Astro.props;
                       {CircleCheck && (
                         <CircleCheck class="w-5 h-5 text-success" />
                       )}
-                      La Solución
+                      La solución
                     </h3>
                     <ul class="space-y-3">
                       {project.solution.map((item) => (
                         <li class="flex items-start gap-3">
                           <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                          <span class="text-ivory/70 font-mono">{item}</span>
+                          <span class="text-ivory/80 font-mono">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div class="p-6 bg-accent/10 border border-accent/20 rounded-2xl">
-                    <h4 class="text-accent font-bold mb-2 font-heading">
-                      El Resultado
+                    <h4 class="text-accent font-bold mb-2 font-heading flex items-center gap-2">
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
+                      </svg>
+                      El resultado
                     </h4>
-                    <p class="text-ivory font-medium">{project.results}</p>
+                    <p class="text-ivory font-medium font-mono">
+                      {project.results}
+                    </p>
                   </div>
                 </div>
 
@@ -122,6 +142,33 @@ const { projects } = Astro.props;
         );
       })
     }
+  </div>
+
+  <div
+    class="mt-20 text-center p-8 rounded-3xl bg-void border border-primary/10 max-w-2xl mx-auto"
+  >
+    <p class="text-ivory font-mono text-lg mb-4">
+      ¿Tu proyecto puede ser el próximo?
+    </p>
+    <a
+      href={whatsappHref}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-2 bg-cta-primary text-ivory px-7 py-3.5 rounded-full font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover"
+    >
+      Hablemos por WhatsApp
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+      >
+    </a>
   </div>
 
   <CTA />

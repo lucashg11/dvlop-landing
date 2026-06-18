@@ -2,53 +2,36 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Services from "../components/Services.astro";
-import About from "../components/About.astro";
 import Work from "../components/Work.astro";
+import About from "../components/About.astro";
 import CTA from "../components/CTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import Pricing from "../components/sections/Pricing.astro";
 import Problem from "../components/sections/Problem.astro";
 import Process from "../components/sections/Process.astro";
-import Values from "../components/sections/Values.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import FAQ from "../components/sections/FAQ.astro";
 
 import { projects } from "../data/projects";
-import { values } from "../data/about";
 ---
 
 <Layout
-  title="LUCAS &lt;DEV/&gt; — Sitios Web que Atraen Clientes y Aparecen en Google"
-  description="Desarrollador web freelance en Zárate. Creo sitios rápidos, optimizados para Google y diseñados para convertir visitas en clientes. Para emprendedores y PyMEs que quieren presencia digital real."
+  title="Lucas Dev · Sitios web que aparecen en Google y traen clientes"
+  description="Desarrollador web en Zárate, Buenos Aires. Creo sitios rápidos, optimizados para Google y diseñados para convertir visitas en consultas. Para emprendedores y PyMEs."
+  hasFaq={true}
 >
   <Header />
-  <main>
-    <!-- 1. Problema — Hero amplificado -->
+  <main id="main">
     <Hero />
-
-    <!-- 2. Problema explícito -->
     <Problem />
-
-    <!-- 3. Solución — A través de qué (servicios individuales) 
-    <Services services={services} />
-    -->
-    <!-- 4. Solución — A través de qué (paquetes) -->
-    <Pricing />
-
-    <!-- 5. Validación — Trabajos realizados con problema/resultado -->
-    <Work projects={projects} />
-
-    <!-- 6. Metodología — Cómo trabajamos -->
     <Process />
-
-    <!-- 7. Cualidades — Valores + perfil -->
-    <Values values={values} />
+    <Work projects={projects} />
+    <Testimonials />
     <About />
-
-    <!-- 8. CTA fuerte antes de contacto -->
+    <Pricing />
+    <FAQ />
     <CTA />
-
-    <!-- 9. Contacto -->
     <Contact />
   </main>
   <Footer />
