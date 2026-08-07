@@ -1,25 +1,18 @@
 <?php
 /**
  * ============================================================
- *  BACKEND DE CONTACTO — PHPMailer + SMTP
+ *  BACKEND DE CONTACTO — PHP nativo (sin dependencias)
  *  Fácil de personalizar: solo modifica la sección "CONFIGURACIÓN"
  * ============================================================
  */
 
 // ── CONFIGURACIÓN ────────────────────────────────────────────
-// Cambia estos valores según tu proveedor de hosting
 
 $config = [
-    // SMTP
-    'smtp_host'     => 'mail.tudominio.com',   // Servidor SMTP (ej: mail.ferozo.com)
-    'smtp_user'     => 'cuenta@tudominio.com', // Tu cuenta de correo
-    'smtp_pass'     => 'tu_contraseña',        // Tu contraseña
-    'smtp_port'     => 465,                    // 465 = SSL | 587 = TLS
-    'smtp_secure'   => 'ssl',                  // 'ssl' o 'tls'
-
     // Correo
     'email_destino' => 'destino@tudominio.com',  // ¿A quién llegan los mensajes?
     'email_asunto'  => 'Nuevo mensaje desde el formulario de contacto',
+    'email_from'    => 'noreply@tudominio.com',  // Dirección del remitente
 
     // Origen permitido (CORS / seguridad básica)
     // Pon la URL de tu sitio web. Deja '' para deshabilitar la verificación.
@@ -30,7 +23,6 @@ $config = [
 
 header('Content-Type: application/json; charset=utf-8');
 
-// Verificar origen si está configurado
 if (!empty($config['origen_permitido'])) {
     header('Access-Control-Allow-Origin: ' . $config['origen_permitido']);
 } else {
@@ -79,55 +71,27 @@ $nombre  = htmlspecialchars($nombre,  ENT_QUOTES, 'UTF-8');
 $email   = htmlspecialchars($email,   ENT_QUOTES, 'UTF-8');
 $mensaje = htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8');
 
-// Cargar PHPMailer (instalado via Composer)
-require __DIR__ . '/../../vendor/autoload.php';
+// Armar el correo
+$cuerpo = "Nombre: {$nombre}\nEmail: {$email}\n\n{$mensaje}";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+$headers = implode("\r\n", [
+    "From: {$config['email_from']}",
+    "Reply-To: {$email}",
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=UTF-8',
+]);
 
-try {
-    $mail = new PHPMailer(true); // true = activa excepciones
+$enviado = mail(
+    $config['email_destino'],
+    $config['email_asunto'],
+    $cuerpo,
+    $headers
+);
 
-    // Servidor SMTP
-    $mail->isSMTP();
-    $mail->Host       = $config['smtp_host'];
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $config['smtp_user'];
-    $mail->Password   = $config['smtp_pass'];
-    $mail->SMTPSecure = $config['smtp_secure'];
-    $mail->Port       = $config['smtp_port'];
-    $mail->CharSet    = 'UTF-8';
-
-    // Remitente y destinatario
-    $mail->setFrom($config['smtp_user'], 'Formulario Web');
-    $mail->addAddress($config['email_destino']);
-    $mail->addReplyTo($email, $nombre); // Reply-To apunta al visitante
-
-    // Contenido del correo
-    $mail->isHTML(true);
-    $mail->Subject = $config['email_asunto'];
-
-    // Cuerpo HTML
-    $mail->Body = "
-        <div style='font-family:sans-serif;max-width:520px;margin:0 auto;padding:24px;'>
-            <h2 style='color:#333;margin-bottom:16px;'>Nuevo mensaje de contacto</h2>
-            <p><strong>Nombre:</strong> {$nombre}</p>
-            <p><strong>Email:</strong> {$email}</p>
-            <hr style='margin:16px 0;border:none;border-top:1px solid #eee;'>
-            <p style='white-space:pre-line;'>{$mensaje}</p>
-        </div>
-    ";
-
-    // Cuerpo texto plano (fallback)
-    $mail->AltBody = "Nombre: {$nombre}\nEmail: {$email}\n\n{$mensaje}";
-
-    $mail->send();
-
+if ($enviado) {
     echo json_encode(['ok' => true, 'mensaje' => 'Tu mensaje fue enviado correctamente.']);
-
-} catch (Exception $e) {
+} else {
     http_response_code(500);
-    // En producción no expongas $mail->ErrorInfo; usa logs internos
-    error_log('PHPMailer Error: ' . $mail->ErrorInfo);
+    error_log('mail() falló al intentar enviar desde el formulario de contacto.');
     echo json_encode(['ok' => false, 'mensaje' => 'No se pudo enviar el mensaje. Intenta más tarde.']);
 }
