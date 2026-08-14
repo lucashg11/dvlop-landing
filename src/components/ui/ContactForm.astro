@@ -1,248 +1,241 @@
 ---
 import { Icon } from "astro-icon/components";
+import FormField from "@components/forms/FormField.astro";
 
 interface Props {
-  titulo?: string;
-  subtitulo?: string;
-  btnTexto?: string;
-  className?: string;
-  showHeader?: boolean;
-  showPrivacy?: boolean;
+    titulo?: string;
+    subtitulo?: string;
+    btnTexto?: string;
+    className?: string;
+    showHeader?: boolean;
+    showPrivacy?: boolean;
 }
 
 const {
-  titulo = "Contáctanos",
-  subtitulo = "Completa el formulario y te respondemos a la brevedad.",
-  btnTexto = "Enviar mensaje",
-  className = "",
-  showHeader = true,
-  showPrivacy = false,
+    titulo = "Hablemos",
+    subtitulo = "Completa el formulario y te respondo en menos de 24 horas.",
+    btnTexto = "Enviar mensaje",
+    className = "",
+    showHeader = true,
+    showPrivacy = false,
 } = Astro.props;
-
-const inputClass =
-  "w-full bg-void border border-primary/10 rounded-xl px-4 py-3 text-ivory placeholder-muted placeholder:font-mono text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all";
-
-const labelClass = "block text-sm font-medium text-ivory/60";
 ---
 
 <div class:list={["contact-form-wrapper space-y-6", className]}>
-  {
-    showHeader && (
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-ivory font-heading">
-          {titulo}
-        </h2>
-        {subtitulo && (
-          <p class="mt-2 text-sm text-muted font-mono leading-relaxed">
-            {subtitulo}
-          </p>
-        )}
-      </div>
-    )
-  }
-
-  <div
-    id="cf-error"
-    class="hidden rounded-xl border border-error/30 bg-error/10 p-4 text-sm text-error font-mono"
-    role="alert"
-    aria-live="polite"
-  >
-  </div>
-
-  <form
-    id="contact-form"
-    name="contact"
-    method="POST"
-    action="/gracias/"
-    data-netlify="true"
-    data-netlify-honeypot="cf-website"
-    novalidate
-    class="space-y-6"
-  >
-    <input type="hidden" name="form-name" value="contact" />
-
-    <p class="absolute opacity-0 pointer-events-none -left-[9999px]" aria-hidden="true">
-      <label for="cf-website">No completar este campo</label>
-      <input
-        id="cf-website"
-        name="cf-website"
-        type="text"
-        tabindex="-1"
-        autocomplete="off"
-      />
-    </p>
-
-    <div class="space-y-2">
-      <label for="cf-nombre" class={labelClass}>
-        Nombre <span class="text-primary" aria-hidden="true">*</span>
-      </label>
-      <input
-        id="cf-nombre"
-        name="nombre"
-        type="text"
-        required
-        autocomplete="name"
-        placeholder="Tu nombre completo"
-        class={inputClass}
-      />
-      <p id="cf-nombre-error" class="hidden mt-1 text-xs text-error font-mono">
-      </p>
-    </div>
-
-    <div class="space-y-2">
-      <label for="cf-email" class={labelClass}>
-        Email <span class="text-primary" aria-hidden="true">*</span>
-      </label>
-      <input
-        id="cf-email"
-        name="email"
-        type="email"
-        required
-        autocomplete="email"
-        placeholder="tu@email.com"
-        class={inputClass}
-      />
-      <p id="cf-email-error" class="hidden mt-1 text-xs text-error font-mono">
-      </p>
-    </div>
-
-    <div class="space-y-2">
-      <label for="cf-mensaje" class={labelClass}>
-        Mensaje <span class="text-primary" aria-hidden="true">*</span>
-      </label>
-      <textarea
-        id="cf-mensaje"
-        name="mensaje"
-        rows="4"
-        required
-        placeholder="Contame qué negocio tenés y en qué te puedo ayudar..."
-        class:list={[
-          inputClass,
-          "resize-none min-h-[120px]",
-        ]}></textarea>
-      <p id="cf-mensaje-error" class="hidden mt-1 text-xs text-error font-mono">
-      </p>
-    </div>
-
-    <button
-      id="cf-submit"
-      type="submit"
-      class="w-full flex items-center justify-center gap-2 bg-cta-primary text-ivory px-8 py-4 rounded-xl text-lg font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-cta-primary-hover active:scale-[.99]"
-    >
-      <svg
-        id="cf-spinner"
-        class="hidden h-5 w-5 animate-spin shrink-0"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <circle
-          class="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          stroke-width="4"></circle>
-        <path
-          class="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-      </svg>
-      <span id="cf-btn-label">{btnTexto}</span>
-      <Icon
-        id="cf-send-icon"
-        name="ri:send-plane-fill"
-        class="w-5 h-5 shrink-0"
-      />
-    </button>
-
     {
-      showPrivacy && (
-        <p class="text-sm text-muted text-center font-mono">
-          Al enviar este formulario, aceptás nuestra política de privacidad.
-        </p>
-      )
+        showHeader && (
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-ivory font-heading">
+                    {titulo}
+                </h2>
+                {subtitulo && (
+                    <p class="mt-2 text-sm text-muted font-mono leading-relaxed">
+                        {subtitulo}
+                    </p>
+                )}
+            </div>
+        )
     }
-  </form>
+
+    <div
+        id="cf-error"
+        class="hidden rounded-xl border border-error/30 bg-error/10 p-4 text-sm text-error font-mono"
+        role="alert"
+        aria-live="polite"
+    >
+    </div>
+
+    <form
+        id="contact-form"
+        name="contact"
+        method="POST"
+        action="/gracias/"
+        data-netlify="true"
+        data-netlify-honeypot="cf-website"
+        novalidate
+        class="space-y-6"
+    >
+        <input type="hidden" name="form-name" value="contact" />
+
+        <p
+            class="absolute opacity-0 pointer-events-none -left-[9999px]"
+            aria-hidden="true"
+        >
+            <label for="cf-website">No completar este campo</label>
+            <input
+                id="cf-website"
+                name="cf-website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+            />
+        </p>
+
+        <FormField
+            name="nombre"
+            label="Nombre"
+            placeholder="Tu nombre completo"
+            autocomplete="name"
+            required
+        />
+
+        <FormField
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="tu@email.com"
+            autocomplete="email"
+            required
+        />
+
+        <FormField
+            name="mensaje"
+            label="Mensaje"
+            type="textarea"
+            placeholder="Contame qué negocio tenés y en qué te puedo ayudar..."
+            required
+        />
+
+        <button
+            id="cf-submit"
+            type="submit"
+            class="w-full flex items-center justify-center gap-2 bg-cta-primary text-ivory px-8 py-4 rounded-btn text-lg font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-cta-primary-hover active:scale-[.99]"
+        >
+            <Icon
+                id="cf-spinner"
+                name="ph:spinner"
+                class="hidden h-5 w-5 animate-spin shrink-0"
+            />
+            <span id="cf-btn-label">{btnTexto}</span>
+            <Icon
+                id="cf-send-icon"
+                name="ph:paper-plane-tilt-fill"
+                class="w-5 h-5 shrink-0"
+            />
+        </button>
+
+        {
+            showPrivacy && (
+                <p class="text-sm text-muted text-center font-mono">
+                    Al enviar este formulario, aceptás mi política de
+                    privacidad.
+                </p>
+            )
+        }
+    </form>
 </div>
 
 <script>
-  (() => {
-    const form = document.getElementById("contact-form");
-    const btnSubmit = document.getElementById("cf-submit");
-    const spinner = document.getElementById("cf-spinner");
-    const sendIcon = document.getElementById("cf-send-icon");
-    const btnLabel = document.getElementById("cf-btn-label");
-    const elError = document.getElementById("cf-error");
+    (() => {
+        const form = document.getElementById(
+            "contact-form",
+        ) as HTMLFormElement | null;
+        const btnSubmit = document.getElementById(
+            "cf-submit",
+        ) as HTMLButtonElement | null;
+        const spinner = document.getElementById(
+            "cf-spinner",
+        ) as HTMLElement | null;
+        const sendIcon = document.getElementById(
+            "cf-send-icon",
+        ) as HTMLElement | null;
+        const btnLabel = document.getElementById(
+            "cf-btn-label",
+        ) as HTMLSpanElement | null;
+        const elError = document.getElementById(
+            "cf-error",
+        ) as HTMLElement | null;
 
-    if (!form || !btnSubmit || !btnLabel) return;
+        if (!form || !btnSubmit || !btnLabel) return;
 
-    const inputOk = ["border-primary/10"];
-    const inputErr = ["border-error"];
+        const inputOk = ["border-ivory/20"];
+        const inputErr = ["border-error"];
 
-    function fieldError(id, msg) {
-      const p = document.getElementById(id + "-error");
-      const input = document.getElementById(id);
-      if (!p || !input) return;
-      p.textContent = msg;
-      p.classList.toggle("hidden", !msg);
-      input.classList.remove(...inputOk, ...inputErr);
-      input.classList.add(...(msg ? inputErr : inputOk));
-    }
+        function fieldError(id: string, msg: string) {
+            const p = document.getElementById(id + "-error");
+            const input = document.getElementById(
+                id,
+            ) as HTMLInputElement | null;
+            if (!p || !input) return;
+            p.textContent = msg;
+            p.classList.toggle("hidden", !msg);
+            input.classList.remove(...inputOk, ...inputErr);
+            input.classList.add(...(msg ? inputErr : inputOk));
+        }
 
-    function setLoading(loading) {
-      btnSubmit.disabled = loading;
-      spinner?.classList.toggle("hidden", !loading);
-      sendIcon?.classList.toggle("hidden", loading);
-      btnLabel.textContent = loading
-        ? "Enviando..."
-        : btnLabel.dataset.original || "Enviar mensaje";
-    }
+        const setLoading = (loading: boolean) => {
+            btnSubmit.disabled = loading;
+            spinner?.classList.toggle("hidden", !loading);
+            sendIcon?.classList.toggle("hidden", loading);
+            btnLabel.textContent = loading
+                ? "Enviando..."
+                : btnLabel.dataset.original || "Enviar mensaje";
+        };
 
-    btnLabel.dataset.original = btnLabel.textContent;
+        btnLabel.dataset.original = btnLabel.textContent;
 
-    ["cf-nombre", "cf-email", "cf-mensaje"].forEach((id) => {
-      document.getElementById(id)?.addEventListener("input", () =>
-        fieldError(id, ""),
-      );
-    });
+        ["field-nombre", "field-email", "field-mensaje"].forEach((id) => {
+            document
+                .getElementById(id)
+                ?.addEventListener("input", () => fieldError(id, ""));
+        });
 
-    form.addEventListener("submit", (e) => {
-      const honeypot = document.getElementById("cf-website")?.value;
-      if (honeypot) return;
+        form.addEventListener("submit", (e) => {
+            const honeypot = (
+                document.getElementById("cf-website") as HTMLInputElement | null
+            )?.value;
+            if (honeypot) return;
 
-      const nombre = document.getElementById("cf-nombre")?.value.trim() ?? "";
-      const email = document.getElementById("cf-email")?.value.trim() ?? "";
-      const mensaje = document.getElementById("cf-mensaje")?.value.trim() ?? "";
+            const nombre =
+                (
+                    document.getElementById(
+                        "field-nombre",
+                    ) as HTMLInputElement | null
+                )?.value.trim() ?? "";
+            const email =
+                (
+                    document.getElementById(
+                        "field-email",
+                    ) as HTMLInputElement | null
+                )?.value.trim() ?? "";
+            const mensaje =
+                (
+                    document.getElementById(
+                        "field-mensaje",
+                    ) as HTMLTextAreaElement | null
+                )?.value.trim() ?? "";
 
-      let valid = true;
-      if (!nombre) {
-        fieldError("cf-nombre", "El nombre es obligatorio.");
-        valid = false;
-      }
-      if (!email) {
-        fieldError("cf-email", "El email es obligatorio.");
-        valid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        fieldError("cf-email", "Ingresá un email válido.");
-        valid = false;
-      }
-      if (!mensaje) {
-        fieldError("cf-mensaje", "El mensaje no puede estar vacío.");
-        valid = false;
-      }
+            let valid = true;
+            if (!nombre) {
+                fieldError("field-nombre", "El nombre es obligatorio.");
+                valid = false;
+            }
+            if (!email) {
+                fieldError("field-email", "El email es obligatorio.");
+                valid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                fieldError("field-email", "Ingresá un email válido.");
+                valid = false;
+            }
+            if (!mensaje) {
+                fieldError("field-mensaje", "El mensaje no puede estar vacío.");
+                valid = false;
+            }
 
-      if (!valid) {
-        e.preventDefault();
-        elError?.classList.remove("hidden");
-        if (elError) elError.textContent = "Revisá los campos marcados en rojo.";
-        elError?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        return;
-      }
+            if (!valid) {
+                e.preventDefault();
+                elError?.classList.remove("hidden");
+                if (elError)
+                    elError.textContent = "Revisá los campos marcados en rojo.";
+                elError?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                });
+                return;
+            }
 
-      elError?.classList.add("hidden");
-      setLoading(true);
-    });
-  })();
+            elError?.classList.add("hidden");
+            setLoading(true);
+        });
+    })();
 </script>

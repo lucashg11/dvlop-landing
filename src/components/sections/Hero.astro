@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+import GradientText from "@components/ui/GradientText.astro";
+import { site } from "@config/site";
+
+const whatsappHref = `${site.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, te escribo desde tu web. Quiero contarte brevemente qué necesito para mi negocio y ver si tiene sentido trabajar juntos.")}`;
+---
+
+<section
+    id="hero"
+    class="relative min-h-screen flex items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden"
+>
+    <div class="absolute inset-0 -z-10 overflow-hidden bg-void">
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+        <div class="absolute inset-0 bg-dot-pattern opacity-40"></div>
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-orb-float"
+        >
+        </div>
+        <div
+            class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] animate-orb-float [animation-delay:-5s]"
+        >
+        </div>
+        <div
+            class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('../assets/images/noise.svg')]"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="max-w-3xl">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-success/10 border border-success/20 text-success text-sm font-medium mb-8 animate-fade-in-up"
+            >
+                <span class="flex h-2 w-2 relative">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"
+                    ></span>
+                    <span
+                        class="relative inline-flex rounded-full h-2 w-2 bg-success"
+                    ></span>
+                </span>
+                Disponible para 2 proyectos este mes
+            </div>
+
+            <h1
+                class="text-3xl md:text-6xl font-extrabold tracking-tight mb-8 animate-fade-in-up animate-delay-100 font-display"
+            >
+                Tené la web que tu negocio merece, <GradientText
+                    >sin complicaciones técnicas.</GradientText
+                >
+            </h1>
+
+            <p
+                class="text-lg font-mono md:text-xl text-muted max-w-xl mb-10 animate-fade-in-up animate-delay-200"
+            >
+                Soy Lucas, y me convierto en tu socio tecnológico. Diseño sitios
+                que cargan rápido y aparecen en Google para que vos te enfoques
+                en vender. Sin vueltas, sin jerga, todo claro.
+            </p>
+
+            <div
+                class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-300"
+            >
+                <a
+                    href="#work"
+                    class="flex items-center justify-center gap-2 bg-cta-primary text-ivory px-8 py-3.5 rounded-full font-medium transition-all shadow-cta-primary hover:shadow-cta-primary-hover"
+                >
+                    Mirá lo que ya construí
+                    <Icon name="ph:arrow-right" class="w-5 h-5" />
+                </a>
+                <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener"
+                    class="flex items-center justify-center gap-2 bg-surface hover:bg-primary text-ivory px-8 py-3.5 rounded-full font-medium transition-all border border-primary/20"
+                >
+                    Charlemos por WhatsApp
+                </a>
+            </div>
+
+            <div
+                class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-muted text-sm font-mono animate-fade-in-up animate-delay-400"
+            >
+                <span class="flex items-center gap-2">
+                    <Icon name="ph:check" class="w-4 h-4 text-success" />
+                    +5 años de experiencia
+                </span>
+                <span class="flex items-center gap-2">
+                    <Icon name="ph:check" class="w-4 h-4 text-success" />
+                    Respuesta en menos de 24 horas
+                </span>
+                <span class="flex items-center gap-2">
+                    <Icon name="ph:check" class="w-4 h-4 text-success" />
+                    Garantía 30 días
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

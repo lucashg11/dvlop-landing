@@ -1,72 +1,63 @@
 ---
-import Badge from "../ui/Badge.astro";
-import GradientText from "../ui/GradientText.astro";
-import { faqs } from "../../data/faqs";
+import { Icon } from "astro-icon/components";
+import Section from "@components/sections/Section.astro";
+import Badge from "@components/ui/Badge.astro";
+import GradientText from "@components/ui/GradientText.astro";
+import { faqs } from "@data/faqs";
+import { site } from "@config/site";
 ---
 
-<!-- JSON-LD FAQPage se inyecta vía SEO.astro con hasFaq={true} -->
+<!-- JSON-LD FAQPage se inyecta vía Seo.astro con hasFaq={true} -->
+<Section id="faq" tone="muted">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <Badge text="Preguntas frecuentes" variant="secondary" />
+            <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4 font-heading">
+                Las dudas <GradientText>más frecuentes</GradientText> antes de empezar.
+            </h2>
+            <p class="text-muted text-lg font-mono">
+                Respuestas honestas a lo que casi todo el mundo pregunta antes
+                de invertir en una web. Si te queda una duda puntual, escribime.
+            </p>
+        </div>
 
-<section id="faq" class="py-24 bg-surface border-t border-primary/10 reveal">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <Badge text="Preguntas frecuentes" variant="secondary" />
-      <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4 font-heading">
-        Las dudas que <GradientText>todos tienen</GradientText>
-      </h2>
-      <p class="text-muted text-lg font-mono">
-        Antes de preguntarme, mirá acá. Si te queda una duda, escribime.
-      </p>
-    </div>
+        <div class="space-y-3">
+            {
+                faqs.map((faq, i) => (
+                    <details
+                        class="group bg-void border border-primary/10 rounded-2xl overflow-hidden hover:border-primary/25 transition-colors"
+                        open={i === 0}
+                    >
+                        <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+                            <h3 class="text-ivory font-semibold text-lg font-heading pr-4">
+                                {faq.question}
+                            </h3>
+                            <span
+                                class="shrink-0 w-9 h-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-open:rotate-45 transition-transform"
+                                aria-hidden="true"
+                            >
+                                <Icon name="ph:plus" class="w-4 h-4" />
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-ivory/80 font-mono leading-relaxed">
+                            {faq.answer}
+                        </div>
+                    </details>
+                ))
+            }
+        </div>
 
-    <div class="space-y-3">
-      {
-        faqs.map((faq, i) => (
-          <details
-            class="group bg-void border border-primary/10 rounded-2xl overflow-hidden hover:border-primary/25 transition-colors"
-            open={i === 0}
-          >
-            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
-              <h3 class="text-ivory font-semibold text-lg font-heading pr-4">
-                {faq.question}
-              </h3>
-              <span
-                class="shrink-0 w-9 h-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-open:rotate-45 transition-transform"
-                aria-hidden="true"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 6v12M6 12h12"
-                  />
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6 text-ivory/80 font-mono leading-relaxed">
-              {faq.answer}
-            </div>
-          </details>
-        ))
-      }
-    </div>
-
-    <div
-      class="mt-12 p-6 rounded-2xl bg-void border border-primary/10 text-center"
-    >
-      <p class="text-muted font-mono text-sm">
-        ¿Tenés otra duda?{" "}
-        <a
-          href="https://wa.me/5493487314587"
-          class="text-primary hover:underline underline-offset-4"
-          >Preguntame por WhatsApp →</a
+        <div
+            class="mt-12 p-6 rounded-2xl bg-void border border-primary/10 text-center"
         >
-      </p>
+            <p class="text-muted font-mono text-sm">
+                ¿Tenés otra duda?{" "}
+                <a
+                    href={site.whatsappUrl}
+                    class="text-primary hover:underline underline-offset-4"
+                    >Preguntame por WhatsApp →</a
+                >
+            </p>
+        </div>
     </div>
-  </div>
-</section>
+</Section>

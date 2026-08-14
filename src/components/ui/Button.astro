@@ -1,52 +1,75 @@
 ---
-import { ICONS } from "../../data/icons";
+/**
+ * Botón polimórfico: se renderiza como <a> si recibe `href`,
+ * en caso contrario como <button>. Sin duplicar variantes.
+ */
+import { Icon } from "astro-icon/components";
+
+type Variant = "primary" | "secondary" | "outline" | "ghost";
+type Size = "sm" | "md" | "lg";
 
 export interface Props {
-  href?: string
-  variant?: "primary" | "secondary" | "outline" | "ghost"
-  size?: "sm" | "md" | "lg"
-  icon?: string
-  class?: string
+    href?: string;
+    type?: "button" | "submit" | "reset";
+    variant?: Variant;
+    size?: Size;
+    /** Icono de Phosphor a la izquierda, p. ej. "ph:arrow-right". */
+    icon?: string;
+    /** Coloca el icono a la derecha del texto. */
+    iconRight?: boolean;
+    block?: boolean;
+    class?: string;
+    [key: string]: unknown;
 }
 
 const {
-  href,
-  variant = "primary",
-  size = "md",
-  icon,
-  class: className = "",
+    href,
+    type = "button",
+    variant = "primary",
+    size = "md",
+    icon,
+    iconRight = false,
+    block = false,
+    class: className = "",
+    ...rest
 } = Astro.props;
 
-const sizes = {
-  sm: "px-5 py-2.5 text-sm",
-  md: "px-8 py-3.5",
-  lg: "px-8 py-4 text-lg",
+const base =
+    "inline-flex items-center justify-center gap-2 rounded-btn font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-void disabled:pointer-events-none disabled:opacity-50";
+
+const variants: Record<Variant, string> = {
+    primary:
+        "bg-cta-primary text-ivory shadow-cta-primary hover:shadow-cta-primary-hover hover:brightness-110",
+    secondary:
+        "bg-surface text-ivory border border-primary/20 hover:border-primary/40",
+    outline: "border border-ivory/30 text-ivory hover:bg-ivory/10",
+    ghost: "text-primary hover:bg-primary/10",
 };
 
-const variantsStyles = {
-  primary:
-    "bg-cta-primary text-ivory shadow-cta-primary hover:shadow-cta-primary-hover",
-  secondary:
-    "bg-surface hover:bg-primary text-ivory border border-primary/20",
-  outline:
-    "bg-transparent hover:bg-primary/10 text-ivory border border-primary/30",
-  ghost:
-    "text-ivory/60 hover:text-primary",
+// Ningún tamaño baja de 44px de alto: es el objetivo táctil
+// recomendado en móvil (WCAG AA).
+const sizes: Record<Size, string> = {
+    sm: "h-11 px-4 text-sm",
+    md: "h-12 px-5 text-base",
+    lg: "h-14 px-7 text-lg",
 };
+
+const classes = [
+    base,
+    variants[variant],
+    sizes[size],
+    block ? "w-full" : "",
+    className,
+]
+    .filter(Boolean)
+    .join(" ");
 
 const Tag = href ? "a" : "button";
-const IconComponent = icon ? ICONS[icon] : null;
+const tagProps = href ? { href } : { type };
 ---
 
-<Tag
-  href={href}
-  class:list={[
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all",
-    sizes[size],
-    variantsStyles[variant],
-    className,
-  ]}
->
-  <slot />
-  {IconComponent && <IconComponent class="w-5 h-5" />}
+<Tag class={classes} {...tagProps} {...rest}>
+    {icon && !iconRight && <Icon name={icon} class="size-5" />}
+    <slot />
+    {icon && iconRight && <Icon name={icon} class="size-5" />}
 </Tag>

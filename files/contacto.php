@@ -93,5 +93,5 @@ if ($enviado) {
 } else {
     http_response_code(500);
     error_log('mail() falló al intentar enviar desde el formulario de contacto.');
-    echo json_encode(['ok' => false, 'mensaje' => 'No se pudo enviar el mensaje. Intenta más tarde.']);
+    echo json_encode(['ok' => false, 'mensaje' => 'No se pudo enviar el mensaje. Intentá más tarde.']);
 }

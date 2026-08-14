@@ -1,0 +1,74 @@
+---
+/**
+ * Campo de formulario accesible: label + control + ayuda/errores.
+ * Renderiza <textarea> si type="textarea", si no un <input>.
+ * Reutilizable en cualquier formulario para no duplicar markup.
+ */
+export interface Props {
+    name: string;
+    label: string;
+    type?: string;
+    placeholder?: string;
+    required?: boolean;
+    autocomplete?: string;
+    rows?: number;
+    hint?: string;
+}
+
+const {
+    name,
+    label,
+    type = "text",
+    placeholder,
+    required = false,
+    autocomplete,
+    rows = 4,
+    hint,
+} = Astro.props;
+
+const id = `field-${name}`;
+const isTextarea = type === "textarea";
+
+// `type` se tipa como string para poder aceptar "textarea", pero el atributo
+// del <input> solo admite la unión HTMLInputTypeAttribute. En la rama del input
+// ya sabemos que no es textarea, así que el cast es seguro.
+const inputType = type as "text";
+
+const controlClass =
+    "w-full rounded-btn border border-ivory/20 bg-surface px-3.5 py-2.5 text-ivory placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
+---
+
+<div class="flex flex-col gap-1.5">
+    <label for={id} class="text-sm font-medium text-ivory">
+        {label}
+        {required && <span class="text-error">*</span>}
+    </label>
+
+    {
+        isTextarea ? (
+            <textarea
+                id={id}
+                name={name}
+                rows={rows}
+                placeholder={placeholder}
+                required={required}
+                class={controlClass}
+            />
+        ) : (
+            <input
+                id={id}
+                name={name}
+                type={inputType}
+                placeholder={placeholder}
+                required={required}
+                autocomplete={autocomplete}
+                class={controlClass}
+            />
+        )
+    }
+
+    {/* Contenedor de error para validación client-side (oculto por defecto). */}
+    <p id={`${id}-error`} class="hidden mt-1 text-xs text-error font-mono"></p>
+
+    {hint && <p class="text-xs text-muted">{hint}</p>}
+</div>

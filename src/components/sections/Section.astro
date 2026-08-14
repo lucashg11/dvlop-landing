@@ -1,0 +1,42 @@
+---
+/**
+ * Bloque de sección reutilizable: aplica espaciado vertical,
+ * contenedor y fondo. Cada sección maneja su propia cabecera
+ * (Badge + GradientText) para preservar la identidad visual.
+ */
+export interface Props {
+    id?: string;
+    /** Fondo de la sección. */
+    tone?: "default" | "muted";
+    /** Ancho del contenedor. */
+    width?: "narrow" | "default" | "wide";
+    class?: string;
+}
+
+const {
+    id,
+    tone = "default",
+    width = "default",
+    class: className = "",
+} = Astro.props;
+
+const tones = {
+    default: "bg-void",
+    muted: "bg-surface",
+};
+
+const widths = {
+    narrow: "max-w-3xl",
+    default: "max-w-7xl",
+    wide: "max-w-screen-2xl",
+};
+---
+
+<section
+    id={id}
+    class:list={["py-section border-t border-primary/10", tones[tone], className]}
+>
+    <div class:list={["mx-auto w-full px-4 sm:px-6 lg:px-8", widths[width]]}>
+        <slot />
+    </div>
+</section>

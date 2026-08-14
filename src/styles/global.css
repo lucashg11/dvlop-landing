@@ -1,5 +1,13 @@
 @import "tailwindcss";
-@import "tailwind-animations";
+
+/* ============================================================
+   TOKENS DE DISEÑO (Tailwind v4 — CSS-first con @theme)
+   Cada variable aquí genera utilidades automáticamente:
+   --color-primary      ->  bg-primary text-primary border-primary ...
+   --font-heading       ->  font-heading
+   --radius-card        ->  rounded-card
+   --spacing-section    ->  py-section
+   ============================================================ */
 @theme {
     /* Palette */
     --color-void: #0c0a09;
@@ -17,52 +25,48 @@
     --font-heading: "Space Grotesk Variable", sans-serif;
     --font-body: "Instrument Sans", sans-serif;
     --font-mono: "DM Mono", monospace;
+
+    /* Escala de espaciado extra */
+    --spacing-section: 6rem; /* py-section para separación de secciones */
+    --spacing-gutter: 1.5rem;
+
+    /* Radios */
+    --radius-btn: 0.625rem;
+    --radius-card: 1rem;
+    --radius-pill: 9999px;
 }
 
-html {
-    font-family: var(--font-body);
+/* ============================================================
+   BASE — resets y estilos globales mínimos
+   ============================================================ */
+@layer base {
+    html {
+        font-family: var(--font-body);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-heading);
+    }
+
+    code,
+    pre,
+    .tag,
+    .label {
+        font-family: var(--font-mono);
+    }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-heading);
-}
-
-code,
-pre,
-.tag,
-.label {
-    font-family: var(--font-mono);
-}
-
-/* Reveal Animations */
-.js .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition:
-        opacity 0.8s cubic-bezier(0.5, 0, 0, 1),
-        transform 0.8s cubic-bezier(0.5, 0, 0, 1);
-    will-change: opacity, transform;
-}
-
-.reveal.reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reveal-visible .reveal {
-    transition-delay: 150ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .js .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
+/* ============================================================
+   UTILIDADES DE COMPOSICIÓN reutilizables
+   ============================================================ */
+@layer components {
+    .container-page {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
     }
 }
 
@@ -89,22 +93,39 @@ pre,
 
 /* Hero Glow */
 .bg-hero-glow {
-    background: radial-gradient(circle at 50% 50%, var(--color-primary) 0%, var(--color-void) 60%);
+    background: radial-gradient(
+        circle at 50% 50%,
+        var(--color-primary) 0%,
+        var(--color-void) 60%
+    );
 }
 
 /* Card Depth gradient (for project thumbnails) */
 .bg-card-depth {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-accent)
+    );
 }
 
-/* CTA Violet */
+/* CTA primary gradient */
 .bg-cta-primary {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-primary-hover)
+    );
 }
 
 /* Conic Halo */
 .bg-conic-halo {
-    background: conic-gradient(from 0deg, var(--color-primary), var(--color-accent), var(--color-primary));
+    background: conic-gradient(
+        from 0deg,
+        var(--color-primary),
+        var(--color-accent),
+        var(--color-primary)
+    );
 }
 
 /* Glass surface */
@@ -162,4 +183,43 @@ pre,
 
 .animate-orb-float {
     animation: orb-float 15s infinite ease-in-out;
+}
+
+/* Animación de entrada del Hero (CSS puro, sin JS) */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-delay-100 {
+    animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+    animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+    animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+    animation-delay: 400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .animate-orb-float {
+        animation: none;
+    }
 }

@@ -1,38 +1,35 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import Work from "../components/Work.astro";
-import About from "../components/About.astro";
-import CTA from "../components/CTA.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import Pricing from "../components/sections/Pricing.astro";
-import Problem from "../components/sections/Problem.astro";
-import Process from "../components/sections/Process.astro";
-import Testimonials from "../components/sections/Testimonials.astro";
-import FAQ from "../components/sections/FAQ.astro";
-
-import { projects } from "../data/projects";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/layout/Header.astro";
+import Hero from "@components/sections/Hero.astro";
+import Work from "@components/sections/Work.astro";
+import About from "@components/sections/About.astro";
+import Contact from "@components/sections/Contact.astro";
+import Footer from "@components/layout/Footer.astro";
+import Pricing from "@components/sections/Pricing.astro";
+import Problem from "@components/sections/Problem.astro";
+import Process from "@components/sections/Process.astro";
+import FAQ from "@components/sections/FAQ.astro";
+import Testimonials from "@components/sections/Testimonials.astro";
+import { projects } from "@data/projects";
 ---
 
 <Layout
-  title="Lucas Dev · Sitios web que aparecen en Google y traen clientes"
-  description="Desarrollador web en Zárate, Buenos Aires. Creo sitios rápidos, optimizados para Google y diseñados para convertir visitas en consultas. Para emprendedores y PyMEs."
-  hasFaq={true}
+    title="Lucas Dev · La web que tu negocio merece, sin complicaciones"
+    description="Soy Lucas y me convierto en tu socio tecnológico. Diseño sitios que cargan rápido y aparecen en Google para que vos te enfoques en vender. Sin vueltas, sin jerga, todo claro."
+    hasFaq={true}
 >
-  <Header />
-  <main id="main">
-    <Hero />
-    <Problem />
-    <Process />
-    <Work projects={projects} />
-    <Testimonials />
-    <About />
-    <Pricing />
-    <FAQ />
-    <CTA />
-    <Contact />
-  </main>
-  <Footer />
+    <Header />
+    <main id="main">
+        <Hero />
+        <Problem />
+        <Work projects={projects} />
+        <Testimonials />
+        <Process />
+        <About />
+        <Pricing />
+        <FAQ />
+        <Contact />
+    </main>
+    <Footer />
 </Layout>

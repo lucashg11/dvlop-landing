@@ -1,0 +1,107 @@
+---
+import { site, footerNav } from "@config/site";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-void pt-20 pb-10 border-t border-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <a href="/" class="flex items-center gap-2 mb-6 w-fit">
+                    <p
+                        class="font-mono font-extrabold text-2xl tracking-tight text-ivory"
+                    >
+                        LUCAS<span
+                            class="bg-linear-to-r from-primary to-accent text-transparent bg-clip-text"
+                            >&lt;&#47;DEV&gt;</span
+                        >
+                    </p>
+                </a>
+                <p
+                    class="text-ivory/60 max-w-sm leading-relaxed mb-8 font-mono"
+                >
+                    {site.description}
+                </p>
+            </div>
+
+            <div>
+                <h3
+                    class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
+                >
+                    Mapa del sitio
+                </h3>
+                <ul class="space-y-4">
+                    {
+                        footerNav.map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class="text-ivory/60 hover:text-primary transition-colors font-medium"
+                                >
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <div>
+                <h3
+                    class="text-ivory font-bold mb-6 tracking-wide uppercase text-sm font-heading"
+                >
+                    Contacto
+                </h3>
+                <ul class="space-y-4 font-mono">
+                    <li class="text-ivory/60">
+                        {site.address[0]}<br />
+                        {site.address[1]}
+                    </li>
+                    <li>
+                        <a
+                            href={`mailto:${site.email}`}
+                            class="text-ivory/60 hover:text-primary transition-colors"
+                        >
+                            {site.email}
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href={site.whatsappUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="text-ivory/60 hover:text-primary transition-colors"
+                        >
+                            WhatsApp: {site.phone}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="pt-8 border-t border-primary/10 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+            <p class="text-muted text-sm font-mono">
+                © {currentYear}
+                {site.alternateName} · {site.address[0]}. Todos los
+                derechos reservados.
+            </p>
+            <div class="flex items-center gap-6 text-sm text-muted">
+                <a
+                    href={site.whatsappUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-ivory transition-colors"
+                >
+                    Contacto
+                </a>
+                <span class="text-muted/50">·</span>
+                <span class="text-muted/70 font-mono"
+                    >Factura C · Monotributo</span
+                >
+            </div>
+        </div>
+    </div>
+</footer>

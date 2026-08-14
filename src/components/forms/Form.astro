@@ -1,0 +1,74 @@
+---
+/**
+ * Formulario de contacto reutilizable con Netlify Forms.
+ * Incluye honeypot antispam y campos vía FormField.
+ */
+import FormField from "@components/forms/FormField.astro";
+import Button from "@components/ui/Button.astro";
+
+export interface Props {
+    /** Nombre del formulario para Netlify. */
+    name?: string;
+    /** Redirección tras envío exitoso. */
+    action?: string;
+    submitLabel?: string;
+}
+
+const {
+    name = "contact",
+    action = "/gracias/",
+    submitLabel = "Enviar mensaje",
+} = Astro.props;
+---
+
+<form
+    name={name}
+    method="POST"
+    action={action}
+    data-netlify="true"
+    data-netlify-honeypot="_gotcha"
+    class="flex flex-col gap-5 rounded-card border border-primary/10 bg-surface p-6 sm:p-8"
+>
+    <input type="hidden" name="form-name" value={name} />
+
+    <div class="grid gap-5 sm:grid-cols-2">
+        <FormField
+            name="nombre"
+            label="Nombre"
+            placeholder="Tu nombre completo"
+            autocomplete="name"
+            required
+        />
+        <FormField
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="tu@email.com"
+            autocomplete="email"
+            required
+        />
+    </div>
+
+    <FormField
+        name="mensaje"
+        label="Mensaje"
+        type="textarea"
+        placeholder="Contame qué negocio tenés y en qué te puedo ayudar..."
+        required
+    />
+
+    {/* Honeypot antispam: oculto para humanos, tentador para bots. */}
+    <div class="hidden" aria-hidden="true">
+        <label>
+            No rellenar
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </label>
+    </div>
+
+    <div class="flex items-center justify-between gap-4">
+        <p class="text-xs text-muted">Responderemos en menos de 24 h.</p>
+        <Button type="submit" icon="ph:paper-plane-tilt" iconRight>
+            {submitLabel}
+        </Button>
+    </div>
+</form>

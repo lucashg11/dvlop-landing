@@ -1,155 +1,137 @@
 ---
-import Badge from "../ui/Badge.astro";
-import GradientText from "../ui/GradientText.astro";
+import { Icon } from "astro-icon/components";
+import Badge from "@components/ui/Badge.astro";
+import GradientText from "@components/ui/GradientText.astro";
 ---
 
-<section
-  id="problem"
-  class="py-24 bg-void border-t border-primary/10 reveal"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div>
-        <Badge text="El problema real" variant="secondary" />
-        <h2
-          class="text-3xl md:text-5xl font-bold mt-4 mb-6 font-heading leading-tight"
-        >
-          Lo que pasa cuando solo <GradientText>tenés redes sociales</GradientText>
-        </h2>
-        <ul class="space-y-4 mb-8">
-          <li class="flex items-start gap-4">
-            <span
-              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
-            >
-              <svg
-                class="w-3 h-3 text-error"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"></path></svg
-              >
-            </span>
-            <span class="text-ivory/80 font-mono text-base leading-relaxed">
-              El <strong class="text-accent underline underline-offset-4">81%
-              de los usuarios</strong> busca en Google antes de contratar un
-              servicio local.
-              <span class="text-muted text-sm">Fuente: Think with Google, 2023</span>
-            </span>
-          </li>
-          <li class="flex items-start gap-4">
-            <span
-              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
-            >
-              <svg
-                class="w-3 h-3 text-error"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"></path></svg
-              >
-            </span>
-            <span class="text-ivory/80 font-mono text-base leading-relaxed">
-              Instagram muestra tus posteos a <strong class="text-accent underline underline-offset-4">~8%
-              de tus seguidores</strong>. El resto no se entera de lo que publicás.
-            </span>
-          </li>
-          <li class="flex items-start gap-4">
-            <span
-              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
-            >
-              <svg
-                class="w-3 h-3 text-error"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"></path></svg
-              >
-            </span>
-            <span class="text-ivory/80 font-mono text-base leading-relaxed">
-              Tu competidor con web <strong class="text-accent underline underline-offset-4">aparece
-              primero</strong> cuando alguien busca lo que vos hacés.
-            </span>
-          </li>
-          <li class="flex items-start gap-4">
-            <span
-              class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
-            >
-              <svg
-                class="w-3 h-3 text-error"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="3"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"></path></svg
-              >
-            </span>
-            <span class="text-ivory/80 font-mono text-base leading-relaxed">
-              Cada día sin web son <strong class="text-accent underline underline-offset-4">consultas
-              que se van a otros</strong> y no vuelven.
-            </span>
-          </li>
-        </ul>
-      </div>
+<section id="problem" class="py-section bg-void border-t border-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+                <Badge text="Hablemos claro" variant="secondary" />
+                <h2
+                    class="text-3xl md:text-5xl font-bold mt-4 mb-6 font-heading leading-tight"
+                >
+                    Estar solo en redes sociales es como <GradientText
+                        >construir en terreno alquilado.</GradientText
+                    >
+                </h2>
+                <p
+                    class="text-muted font-mono text-base leading-relaxed mb-8 max-w-lg"
+                >
+                    Si mañana cambia el algoritmo o te cierran la cuenta, perdés
+                    el contacto con tus clientes. Necesitás un lugar que sea
+                    tuyo de verdad.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+                        >
+                            <Icon
+                                name="ph:x"
+                                class="w-3 h-3 text-error"
+                            />
+                        </span>
+                        <span
+                            class="text-ivory/80 font-mono text-base leading-relaxed"
+                        >
+                            El <strong
+                                class="text-accent underline underline-offset-4"
+                                >81% de los usuarios</strong
+                            > busca en Google antes de contratar un servicio local.
+                            Si no aparecés, se van con el primero que sí aparezca.
+                            <span class="text-muted text-sm"
+                                >Fuente: Think with Google</span
+                            >
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+                        >
+                            <Icon
+                                name="ph:x"
+                                class="w-3 h-3 text-error"
+                            />
+                        </span>
+                        <span
+                            class="text-ivory/80 font-mono text-base leading-relaxed"
+                        >
+                            Instagram muestra tus posteos a ~<strong
+                                class="text-accent underline underline-offset-4"
+                                >8% de tus seguidores</strong
+                            >. El otro 92% se entera tarde, mal, o nunca de lo
+                            que publicás hoy mismo.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+                        >
+                            <Icon
+                                name="ph:x"
+                                class="w-3 h-3 text-error"
+                            />
+                        </span>
+                        <span
+                            class="text-ivory/80 font-mono text-base leading-relaxed"
+                        >
+                            Tu competidor con web <strong
+                                class="text-accent underline underline-offset-4"
+                                >aparece primero</strong
+                            > en Google cuando alguien busca exactamente lo que vos
+                            hacés, y se lleva la consulta.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 rounded-full bg-error/10 border border-error/30 shrink-0 mt-0.5"
+                        >
+                            <Icon
+                                name="ph:x"
+                                class="w-3 h-3 text-error"
+                            />
+                        </span>
+                        <span
+                            class="text-ivory/80 font-mono text-base leading-relaxed"
+                        >
+                            Cada día que pasa sin web son <strong
+                                class="text-accent underline underline-offset-4"
+                                >consultas que se van a otros</strong
+                            >, y esas personas difícilmente vuelven a
+                            contactarte.
+                        </span>
+                    </li>
+                </ul>
+            </div>
 
-      <div
-        class="bg-surface rounded-3xl border border-primary/10 p-8 lg:p-10"
-      >
-        <div
-          class="w-14 h-14 rounded-2xl bg-success/10 border border-success/20 flex items-center justify-center mb-6"
-        >
-          <svg
-            class="w-7 h-7 text-success"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg
-          >
+            <div
+                class="bg-surface rounded-3xl border border-primary/10 p-8 lg:p-10"
+            >
+                <div
+                    class="w-14 h-14 rounded-2xl bg-success/10 border border-success/20 flex items-center justify-center mb-6"
+                >
+                    <Icon name="ph:trend-up" class="w-7 h-7 text-success" />
+                </div>
+                <h3 class="text-2xl font-bold font-heading text-ivory mb-4">
+                    Yo me encargo de la tecnología para que vos <span
+                        class="text-success">te encargues de tu negocio.</span
+                    >
+                </h3>
+                <p class="text-muted font-mono leading-relaxed mb-6">
+                    Hablamos el mismo idioma: el de los resultados. Te construyo
+                    una web profesional que trabaje para vos las 24 horas, sin
+                    que tengas que aprender código.
+                </p>
+                <a
+                    href="#process"
+                    class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors font-mono"
+                >
+                    Mirá cómo trabajamos juntos
+                    <Icon name="ph:arrow-right" class="w-4 h-4" />
+                </a>
+            </div>
         </div>
-        <h3 class="text-2xl font-bold font-heading text-ivory mb-4">
-          Una web bien hecha es tu <span class="text-success">vendedor 24/7</span>
-        </h3>
-        <p class="text-muted font-mono leading-relaxed mb-6">
-          Aparece cuando te buscan, explica lo que hacés, genera confianza y
-          lleva al cliente directo a tu WhatsApp. Eso es lo que construyo. Y lo
-          que sigue es cómo.
-        </p>
-        <a
-          href="#process"
-          class="inline-flex items-center gap-2 text-primary font-medium hover:text-accent transition-colors font-mono"
-        >
-          Ver el proceso
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-          >
-        </a>
-      </div>
     </div>
-  </div>
 </section>

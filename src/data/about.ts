@@ -1,25 +1,22 @@
-import type { TeamMember } from "../components/sections/Team.astro";
-import type { Value } from "../components/sections/Values.astro";
+export interface Value {
+  title: string;
+  description: string;
+}
 
 export const values: Value[] = [
   {
-    title: "Te escucho de verdad",
+    title: "Te escucho antes de escribir código",
     description:
-      "Antes de escribir una línea de código, entiendo qué hace tu negocio, qué te duele y qué querés lograr. Si algo no te sirve, te lo digo, aunque sea perder la venta.",
-    icon: "target",
+      "Antes de tocar una línea, entiendo qué hace tu negocio, qué te duele hoy y qué resultado querés ver en 3, 6 y 12 meses. Si algo que te sirvió a otro negocio no aplica al tuyo, te lo digo, aunque eso sea perder la venta.",
   },
   {
-    title: "Sitios que aguantan",
+    title: "Sitios que siguen rindiendo",
     description:
-      "Responsivo en cualquier dispositivo, que cargue rápido, que se vea profesional. Lo que entrego tiene que seguir funcionando a los 6 meses, no solo el día del lanzamiento.",
-    icon: "zap",
+      "Responsivo en cualquier dispositivo, carga rápida, se ve profesional. Lo que entrego tiene que seguir funcionando a los 6 y 12 meses, no solo el día del lanzamiento. Por eso trabajo con stack moderno en vez de plantillas pesadas.",
   },
   {
-    title: "Sin vueltas",
+    title: "Sin vueltas, sin jerga",
     description:
-      "Entrega en días, no meses. Chats directos por WhatsApp, propuestas por escrito, claridad total del avance. Sin burocracia, sin intermediarios, sin jerga.",
-    icon: "clock",
+      "Entrega en días, no meses. Comunicación directa por WhatsApp, propuestas por escrito, reportes claros del avance. Sin burocracia, sin intermediarios, sin tener que adivinar en qué etapa está tu proyecto.",
   },
 ];
-
-export const team: TeamMember[] = [];

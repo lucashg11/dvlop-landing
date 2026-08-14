@@ -1,336 +1,297 @@
 ---
-import Badge from "../ui/Badge.astro";
-import GradientText from "../ui/GradientText.astro";
-import { siteConfig } from "../../data/site";
+import { Icon } from "astro-icon/components";
+import Section from "@components/sections/Section.astro";
+import Badge from "@components/ui/Badge.astro";
+import GradientText from "@components/ui/GradientText.astro";
+import { site } from "@config/site";
 
-const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, vengo de tu web y quiero reservar 15 minutos para hablar de mi proyecto.")}`;
+const whatsappHref = `${site.whatsappUrl}?text=${encodeURIComponent("Hola Lucas, te escribo desde tu web. Quiero contarte brevemente qué necesito para mi negocio y ver si tiene sentido trabajar juntos.")}`;
 
 const packages = [
-  {
-    id: "presencia",
-    name: "Presencia",
-    tagline: "Tu primer paso en Google",
-    priceLabel: "Inversión inicial",
-    price: "$450.000",
-    monthly: null,
-    highlight: false,
-    badge: null,
-    description:
-      "Una Landing Page profesional con dominio y email corporativo. Listo en 7 a 10 días.",
-    includes: [
-      "Landing Page diseñada a medida",
-      "Dominio .com.ar por 1 año",
-      "2 cuentas de email corporativo",
-      "SEO on-page básico",
-      "Google Analytics + Search Console",
-      "SSL (candado verde) incluido",
-      "Formulario + WhatsApp + Google Maps",
-    ],
-    notIncluded: ["Mantenimiento mensual", "SEO local recurrente"],
-    cta: "Quiero este plan",
-    note: "Renovación de dominio anual a cargo del cliente.",
-  },
-  {
-    id: "crecimiento",
-    name: "Crecimiento",
-    tagline: "El más elegido",
-    priceLabel: "Inversión inicial",
-    price: "$950.000",
-    monthly: "$150.000",
-    monthlyLabel: "/ mes",
-    highlight: true,
-    badge: "Más elegido",
-    description:
-      "Sitio institucional completo, con alguien que lo cuida todos los meses y lo posiciona en Google local.",
-    includes: [
-      "Todo lo de Presencia",
-      "Sitio institucional hasta 5 páginas",
-      "3 cuentas de email corporativo",
-      "Mantenimiento mensual (4 cambios + backup)",
-      "SEO local (Google My Business + keywords)",
-      "Reporte mensual de visitas y SEO",
-      "Garantía 30 días por escrito",
-    ],
-    notIncluded: ["Funcionalidades dinámicas personalizadas"],
-    cta: "Quiero este plan",
-    note: "Compromiso mínimo de 3 meses en mantenimiento + SEO. Después, mes a mes.",
-  },
-  {
-    id: "dominio",
-    name: "Dominio Local",
-    tagline: "Para liderar tu categoría en Google",
-    priceLabel: "Inversión inicial",
-    price: "$1.800.000",
-    monthly: "$300.000",
-    monthlyLabel: "/ mes",
-    highlight: false,
-    badge: null,
-    description:
-      "La solución completa para negocios que quieren liderar su categoría en Google y necesitan funcionalidades a medida.",
-    includes: [
-      "Todo lo de Crecimiento",
-      "Funcionalidades dinámicas personalizadas",
-      "5 cuentas de email corporativo",
-      "Mantenimiento completo (8 cambios + soporte prioritario)",
-      "SEO avanzado — más keywords y backlinks de calidad",
-      "Reporte SEO detallado mensual",
-      "Garantía 30 días por escrito",
-    ],
-    notIncluded: [],
-    cta: "Quiero este plan",
-    note: "Incluye consultoría inicial de 45 minutos sin cargo.",
-  },
+    {
+        id: "presencia",
+        name: "Presencia",
+        tagline: "Para dar el primer paso en Google",
+        priceLabel: "Inversión inicial",
+        price: "$450.000",
+        monthly: null,
+        highlight: false,
+        badge: null,
+        description:
+            "Una Landing Page profesional con dominio propio y email corporativo. Listo en 7 a 10 días hábiles.",
+        includes: [
+            "Landing Page diseñada a medida (no plantilla)",
+            "Dominio .com.ar registrado a tu nombre por 1 año",
+            "2 cuentas de email corporativo con tu dominio",
+            "SEO on-page básico para que Google te encuentre",
+            "Google Analytics + Search Console configurados",
+            "SSL (candado verde) ya incluído",
+            "Formulario + WhatsApp + mapa de Google Maps",
+            "Garantía 30 días por escrito en el contrato",
+        ],
+        notIncluded: ["Mantenimiento mensual", "SEO local recurrente"],
+        cta: "Lo quiero, hablemos",
+        note: "Renovación anual del dominio a cargo del cliente (~$15.000 ARS en NIC.ar).",
+    },
+    {
+        id: "crecimiento",
+        name: "Crecimiento",
+        tagline: "El más elegido · Recomendado para la mayoría",
+        priceLabel: "Inversión inicial",
+        price: "$950.000",
+        monthly: "$150.000",
+        monthlyLabel: "/ mes",
+        highlight: true,
+        badge: "Más elegido",
+        description:
+            "Sitio institucional completo, con alguien que lo cuida todos los meses y lo posiciona en Google de forma sostenida.",
+        includes: [
+            "Todo lo del paquete Presencia",
+            "Sitio institucional hasta 5 páginas",
+            "3 cuentas de email corporativo",
+            "Mantenimiento mensual (4 cambios de contenido + backups semanales)",
+            "SEO local (Google My Business + keywords de tu rubro)",
+            "Reporte mensual de visitas y posiciones en Google",
+            "Garantía 30 días por escrito en el contrato",
+        ],
+        notIncluded: [
+            "Funcionalidades dinámicas personalizadas (tiendas, turnos, etc.)",
+        ],
+        cta: "Lo quiero, hablemos",
+        note: "Compromiso mínimo de 3 meses en mantenimiento + SEO. Después seguís mes a mes, sin atar.",
+    },
+    {
+        id: "dominio",
+        name: "Dominio Local",
+        tagline: "Para liderar tu categoría en Google",
+        priceLabel: "Inversión inicial",
+        price: "$1.800.000",
+        monthly: "$300.000",
+        monthlyLabel: "/ mes",
+        highlight: false,
+        badge: null,
+        description:
+            "La solución completa para negocios que quieren liderar su categoría en Google y necesitan funcionalidades a medida.",
+        includes: [
+            "Todo lo del paquete Crecimiento",
+            "Funcionalidades dinámicas a medida (tienda, turnos, panel, etc.)",
+            "5 cuentas de email corporativo",
+            "Mantenimiento completo (8 cambios de contenido + soporte prioritario)",
+            "SEO avanzado: más keywords, backlinks de calidad, contenido mensual",
+            "Reporte SEO detallado con recomendaciones accionables",
+            "Garantía 30 días por escrito en el contrato",
+        ],
+        notIncluded: [],
+        cta: "Lo quiero, hablemos",
+        note: "Incluye una consultoría inicial de 45 minutos sin cargo para definir el alcance.",
+    },
 ];
 ---
 
-<section
-  id="pricing"
-  class="py-24 bg-void border-t border-primary/10 reveal"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<Section id="pricing" tone="default">
     <div class="text-center max-w-3xl mx-auto mb-10">
-      <Badge text="Paquetes de servicio" variant="secondary" />
-      <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal font-heading">
-        Todo lo que tu negocio necesita,
-        <GradientText>en un solo paquete.</GradientText>
-      </h2>
-      <p class="text-muted text-lg font-mono">
-        Dominio, sitio web, email corporativo, mantenimiento y SEO. Sin
-        lidiar con múltiples proveedores ni sorpresas de precio.
-      </p>
+        <Badge text="Paquetes de servicio" variant="secondary" />
+        <h2 class="text-3xl md:text-5xl font-bold mb-4 font-heading">
+            Tres paquetes. <GradientText
+                >El que necesitás, no el que vendo.</GradientText
+            >
+        </h2>
+        <p class="text-muted text-lg font-mono">
+            Cada uno incluye lo necesario para que tu web esté online, se
+            vea profesional y aparezca en Google. La diferencia entre
+            paquetes está en el alcance y en cuánto te acompaño después del
+            lanzamiento.
+        </p>
     </div>
 
-    <div
-      class="mb-12 p-5 rounded-2xl border border-success/30 bg-success/5 text-center max-w-2xl mx-auto"
-    >
-      <p class="text-success font-mono text-sm">
-        <strong>Garantía 30 días:</strong> si en los primeros 30 días no estás
-        conforme con el diseño, te devuelvo el 100%. Cláusula explícita en
-        el contrato.
-      </p>
-    </div>
+        <div
+            class="mb-12 p-5 rounded-2xl border border-success/30 bg-success/5 text-center max-w-2xl mx-auto"
+        >
+            <p class="text-success font-mono text-sm">
+                <strong>Garantía 30 días:</strong> si durante el primer mes desde
+                la entrega no estás conforme con el diseño, te devuelvo el 100% de
+                lo que pagaste. Está escrito en el contrato, sin letra chica.
+            </p>
+        </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 lg:gap-4 items-stretch">
-      {
-        packages.map((pkg) => (
-          <div
-            class:list={[
-              "relative flex flex-col rounded-3xl border transition-all duration-300",
-              pkg.highlight
-                ? "bg-primary/5 border-primary/40 shadow-[0_0_60px_rgba(234,88,12,0.12)] lg:scale-105 z-10"
-                : "bg-surface border-primary/10 hover:border-primary/25",
-            ]}
-          >
-            {pkg.badge && (
-              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span class="inline-flex items-center gap-1.5 bg-primary text-ivory text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(234,88,12,0.5)]">
-                  <span class="w-1.5 h-1.5 rounded-full bg-ivory/80 animate-pulse" />
-                  {pkg.badge}
-                </span>
-              </div>
-            )}
+        <div class="grid lg:grid-cols-3 gap-6 lg:gap-4 items-stretch">
+            {
+                packages.map((pkg) => (
+                    <div
+                        class:list={[
+                            "relative flex flex-col rounded-3xl border transition-all duration-300",
+                            pkg.highlight
+                                ? "bg-primary/5 border-primary/40 shadow-[0_0_60px_rgba(234,88,12,0.12)] lg:scale-105 z-10"
+                                : "bg-surface border-primary/10 hover:border-primary/25",
+                        ]}
+                    >
+                        {pkg.badge && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                                <span class="inline-flex items-center gap-1.5 bg-primary text-ivory text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(234,88,12,0.5)]">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-ivory/80 animate-pulse" />
+                                    {pkg.badge}
+                                </span>
+                            </div>
+                        )}
 
-            <div class="p-8 flex flex-col gap-6 h-full">
-              <div>
-                <span
-                  class:list={[
-                    "text-2xl font-bold font-heading block mb-2",
-                    pkg.highlight ? "text-primary" : "text-ivory",
-                  ]}
-                >
-                  {pkg.name}
-                </span>
-                <p class="text-muted text-sm font-mono">{pkg.tagline}</p>
-              </div>
+                        <div class="p-8 flex flex-col gap-6 h-full">
+                            <div>
+                                <span
+                                    class:list={[
+                                        "text-2xl font-bold font-heading block mb-2",
+                                        pkg.highlight
+                                            ? "text-primary"
+                                            : "text-ivory",
+                                    ]}
+                                >
+                                    {pkg.name}
+                                </span>
+                                <p class="text-muted text-sm font-mono">
+                                    {pkg.tagline}
+                                </p>
+                            </div>
 
-              <div
-                class:list={[
-                  "rounded-2xl p-5 border",
-                  pkg.highlight
-                    ? "bg-primary/10 border-primary/20"
-                    : "bg-void border-primary/10",
-                ]}
-              >
-                <p class="text-xs uppercase tracking-widest text-muted font-mono mb-1">
-                  {pkg.priceLabel}
-                </p>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-3xl font-bold font-heading text-ivory">
-                    {pkg.price}
-                  </span>
-                  <span class="text-muted text-sm font-mono">ARS</span>
-                </div>
-                {pkg.monthly && (
-                  <div class="mt-3 pt-3 border-t border-primary/10 flex items-baseline gap-1 flex-wrap">
-                    <span class="text-primary font-bold text-xl font-heading">
-                      {pkg.monthly}
-                    </span>
-                    <span class="text-muted text-sm font-mono">
-                      {pkg.monthlyLabel}
-                    </span>
-                    <span class="text-muted text-xs font-mono ml-1">
-                      mantenimiento + SEO
-                    </span>
-                  </div>
-                )}
-                {!pkg.monthly && (
-                  <p class="mt-3 text-xs text-muted font-mono">
-                    Sin mensualidad obligatoria
-                  </p>
-                )}
-              </div>
+                            <div
+                                class:list={[
+                                    "rounded-2xl p-5 border",
+                                    pkg.highlight
+                                        ? "bg-primary/10 border-primary/20"
+                                        : "bg-void border-primary/10",
+                                ]}
+                            >
+                                <p class="text-xs uppercase tracking-widest text-muted font-mono mb-1">
+                                    {pkg.priceLabel}
+                                </p>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-3xl font-bold font-heading text-ivory">
+                                        {pkg.price}
+                                    </span>
+                                    <span class="text-muted text-sm font-mono">
+                                        ARS
+                                    </span>
+                                </div>
+                                {pkg.monthly && (
+                                    <div class="mt-3 pt-3 border-t border-primary/10 flex items-baseline gap-1 flex-wrap">
+                                        <span class="text-primary font-bold text-xl font-heading">
+                                            {pkg.monthly}
+                                        </span>
+                                        <span class="text-muted text-sm font-mono">
+                                            {pkg.monthlyLabel}
+                                        </span>
+                                        <span class="text-muted text-xs font-mono ml-1">
+                                            mantenimiento + SEO
+                                        </span>
+                                    </div>
+                                )}
+                                {!pkg.monthly && (
+                                    <p class="mt-3 text-xs text-muted font-mono">
+                                        Sin mensualidad obligatoria
+                                    </p>
+                                )}
+                            </div>
 
-              <p class="text-ivory/70 text-sm font-mono leading-relaxed">
-                {pkg.description}
-              </p>
+                            <p class="text-ivory/70 text-sm font-mono leading-relaxed">
+                                {pkg.description}
+                            </p>
 
-              <div class="flex-1">
-                <p class="text-xs uppercase tracking-widest text-muted font-mono mb-3">
-                  Incluye
-                </p>
-                <ul class="space-y-2.5">
-                  {pkg.includes.map((item) => (
-                    <li class="flex items-start gap-3">
-                      <svg
-                        class="w-4 h-4 text-primary mt-0.5 shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span class="text-ivory/80 text-sm font-mono">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                  {pkg.notIncluded.map((item) => (
-                    <li class="flex items-start gap-3 opacity-40">
-                      <svg
-                        class="w-4 h-4 text-muted mt-0.5 shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                      <span class="text-muted text-sm font-mono line-through">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                            <div class="flex-1">
+                                <p class="text-xs uppercase tracking-widest text-muted font-mono mb-3">
+                                    Incluye
+                                </p>
+                                <ul class="space-y-2.5">
+                                    {pkg.includes.map((item) => (
+                                        <li class="flex items-start gap-3">
+                                            <Icon
+                                                name="ph:check"
+                                                class="w-4 h-4 text-primary mt-0.5 shrink-0"
+                                            />
+                                            <span class="text-ivory/80 text-sm font-mono">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                    {pkg.notIncluded.map((item) => (
+                                        <li class="flex items-start gap-3 opacity-40">
+                                            <Icon
+                                                name="ph:x"
+                                                class="w-4 h-4 text-muted mt-0.5 shrink-0"
+                                            />
+                                            <span class="text-muted text-sm font-mono line-through">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-              {pkg.note && (
-                <p class="text-xs text-muted font-mono border-t border-primary/10 pt-4">
-                  * {pkg.note}
-                </p>
-              )}
+                            {pkg.note && (
+                                <p class="text-xs text-muted font-mono border-t border-primary/10 pt-4">
+                                    * {pkg.note}
+                                </p>
+                            )}
 
-              <a
+                            <a
+                                href={whatsappHref}
+                                target="_blank"
+                                rel="noopener"
+                                class:list={[
+                                    "mt-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm transition-all",
+                                    pkg.highlight
+                                        ? "bg-cta-primary text-ivory shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]"
+                                        : "bg-void border border-primary/20 text-ivory hover:bg-primary/10 hover:border-primary/40",
+                                ]}
+                            >
+                                {pkg.cta}
+                                <Icon name="ph:arrow-right" class="w-4 h-4" />
+                            </a>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <p class="text-center text-muted text-sm font-mono mt-10">
+            ¿Tenés dudas sobre cuál te conviene?{" "}
+            <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener"
-                class:list={[
-                  "mt-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm transition-all",
-                  pkg.highlight
-                    ? "bg-cta-violet text-ivory shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]"
-                    : "bg-void border border-primary/20 text-ivory hover:bg-primary/10 hover:border-primary/40",
-                ]}
-              >
-                {pkg.cta}
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                class="text-primary hover:underline underline-offset-4"
+                >Contame brevemente qué necesita tu negocio y te recomiendo el
+                indicado →</a
+            >
+        </p>
+
+        <div
+            class="mt-16 p-10 lg:p-12 rounded-3xl border border-primary/10 bg-surface text-center max-w-3xl mx-auto"
+        >
+            <div
+                class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6"
+            >
+                <Icon name="ph:sparkle" class="w-7 h-7 text-primary" />
             </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <p class="text-center text-muted text-sm font-mono mt-10">
-      ¿No sabés cuál te conviene?{" "}
-      <a
-        href={whatsappHref}
-        target="_blank"
-        rel="noopener"
-        class="text-primary hover:underline underline-offset-4"
-        >Contame tu negocio y te recomiendo el indicado →</a
-      >
-    </p>
-
-    <div
-      class="mt-16 p-10 lg:p-12 rounded-3xl border border-primary/10 bg-surface text-center max-w-3xl mx-auto"
-    >
-      <div
-        class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6"
-      >
-        <svg
-          class="w-7 h-7 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="1.5"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-          />
-        </svg>
-      </div>
-      <h3 class="text-2xl md:text-3xl font-bold font-heading text-ivory mb-4">
-        ¿Tenés algo más complejo en mente?
-      </h3>
-      <p class="text-muted font-mono text-base max-w-lg mx-auto mb-8 leading-relaxed">
-        Si tu proyecto combina varios servicios, requiere funcionalidades
-        específicas o querés una propuesta
-        <strong class="text-ivory">hecha desde cero</strong>
-        para tu negocio, te armo un paquete a medida. Sin costo adicional.
-      </p>
-      <a
-        href={whatsappHref}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 bg-cta-violet text-ivory px-8 py-4 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] hover:scale-105"
-      >
-        Reservá 15 minutos y te paso propuesta en 24h
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+            <h3
+                class="text-2xl md:text-3xl font-bold font-heading text-ivory mb-4"
+            >
+                ¿Tu proyecto es distinto a estos paquetes?
+            </h3>
+            <p
+                class="text-muted font-mono text-base max-w-lg mx-auto mb-8 leading-relaxed"
+            >
+                Si necesitás combinar varios servicios, una funcionalidad
+                específica (tienda online, sistema de turnos, integraciones a
+                medida) o algo que no encaje en los paquetes estándar, te armo
+                una propuesta a medida. La primera reunión de 45 minutos es sin
+                cargo.
+            </p>
+            <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 bg-cta-primary text-ivory px-8 py-4 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] hover:scale-105"
+            >
+                Reservá 15 minutos y recibí tu propuesta en 24 horas
+                <Icon name="ph:arrow-right" class="w-5 h-5" />
+            </a>
+        </div>
+</Section>

@@ -1,6 +1,6 @@
 ---
-import { siteConfig } from "../data/site";
-import { faqs } from "../data/faqs";
+import { site, socials } from "@config/site";
+import { faqs } from "@data/faqs";
 
 interface Props {
   title: string;
@@ -40,7 +40,7 @@ const faqJsonLd = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.site)} />
-<meta property="og:site_name" content={siteConfig.alternateName} />
+<meta property="og:site_name" content={site.alternateName} />
 <meta property="og:locale" content="es_AR" />
 
 <meta property="twitter:card" content="summary_large_image" />
@@ -57,20 +57,20 @@ const faqJsonLd = {
   set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: siteConfig.name,
-    alternateName: siteConfig.alternateName,
+    name: site.name,
+    alternateName: site.alternateName,
     url: Astro.site,
     logo: new URL("/favicon.svg", Astro.site),
-    description: siteConfig.description,
-    email: siteConfig.email,
-    telephone: siteConfig.phone,
+    description: site.description,
+    email: site.email,
+    telephone: site.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: siteConfig.address[0],
-      addressRegion: siteConfig.address[1],
+      addressLocality: site.address[0],
+      addressRegion: site.address[1],
       addressCountry: "AR",
     },
-    sameAs: siteConfig.socials.map((s) => s.href),
+    sameAs: socials.map((s) => s.href),
   })}
 />
 
@@ -81,16 +81,16 @@ const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": new URL("#business", Astro.site),
-    name: siteConfig.alternateName,
+    name: site.alternateName,
     image: new URL(image, Astro.site),
     url: Astro.site,
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
+    telephone: site.phone,
+    email: site.email,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      addressLocality: siteConfig.address[0],
-      addressRegion: siteConfig.address[1],
+      addressLocality: site.address[0],
+      addressRegion: site.address[1],
       addressCountry: "AR",
     },
     areaServed: {
@@ -106,9 +106,9 @@ const faqJsonLd = {
   set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: siteConfig.alternateName,
+    name: site.alternateName,
     url: Astro.site,
-    description: siteConfig.description,
+    description: site.description,
     inLanguage: "es-AR",
   })}
 />

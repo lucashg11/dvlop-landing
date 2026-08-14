@@ -48,7 +48,7 @@ import ContactForm from '../components/ContactForm.astro';
 <ContactForm
   apiUrl="/api/contacto.php"
   titulo="Hablemos"
-  subtitulo="Te respondemos en menos de 24 hs."
+  subtitulo="Te respondo en menos de 24 horas."
   btnTexto="Quiero contactarme"
 />
 ```
@@ -60,7 +60,7 @@ import ContactForm from '../components/ContactForm.astro';
 | Prop         | Tipo     | Default                         | Descripción                        |
 |--------------|----------|---------------------------------|------------------------------------|
 | `apiUrl`     | `string` | `'/api/contacto.php'`           | URL del backend PHP                |
-| `titulo`     | `string` | `'Contáctanos'`                 | Título del formulario              |
+| `titulo`     | `string` | `'Hablemos'`                    | Título del formulario              |
 | `subtitulo`  | `string` | `'Completa el formulario y...'` | Subtítulo                          |
 | `btnTexto`   | `string` | `'Enviar mensaje'`              | Texto del botón                    |
 | `className`  | `string` | `''`                            | Clases Tailwind extra para wrapper |
